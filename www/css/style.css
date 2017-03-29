@@ -1,3 +1,32 @@
 ﻿body
 {
 }
+#ListaPojemnik{
+
+    height:100px;
+    overflow:visible;
+     font-family:Arial;
+
+}
+#Kalkulator{
+
+
+   
+}
+.ui-icon-posilki {
+    background-color: #666;
+    background-color: rgba(0,0,0,.3);
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 1em;
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QMbFjg49kITbgAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAACiklEQVQ4y52TzS9jURjGf+29ldvkSitqWh9VVISxnCbYTUWwYmzMzmwME//A+BfGVmLTWbEYdjZEsGujdhrpJTaIVDd1haZfrt6e2Yxyx5iMeZKTnHPynt95nyd5bUIIwS+ZpokkSfyP7A+bVCrF8vIymUyG+/t77u7u/vrQMAzL2fa0o6WlJdLpNPl8nra2NmZmZnA6nc8g+/v75HI5wuFw1YH9acHc3BzBYJCLiwuampr+CEmn0+zt7SFJkiUGC6hcLtPV1cX4+Dg1NTVEIhGSySSaprG5uYkQgq2tLba3d9jd3bXYr1qLx+OsrKyg69ekUikSiQSlYpGR0VEkSSIWi7Gw8A1N07i9zbK2tsbq6g/GxsYeQbquMz39mVKpRDQapZAvVH9qDbTS0tLC2dkZ3d3dxONx5ue/Ul9fz+DgID09PY/WNE3DNE0mJj4gy7Ilk8vLSzo7g4yMDKOqKl6vl2RS4/z8nObmZmtGhmHg8Xg4Pj4me5u1gBRFIZO5Ynt7B7fbRTj8nkQiQSTynZOTk2qdDODxeCgWi3i9b1CcCqZpVgs6OjpobPRhGAa6fk2hUKC9vZ1AIEBDQ4MVdHV1hWmWMQyDoaEhS0dutwtVVRkY6CebzXJ6ekZv71tUVaWuru6x0DRNMTv7Rciy41XL52sUh4eH4kGy3W7H72/BLJuvmi2Xy4Xb7baGHQqFUGvVV4H6+vrw+XyPF0IIkcvlxNTUJ2HD/k/L6/WJ9fV18VQ8bA4ODsTk5Echy46XITa7CAY7xeLiovhdlunXdZ2NjQ2i0RhHR0fc3NxQqVRQFAW/308o9I7h4WH6+/ufWbWAng5vPp+nWCxSqVRwOBzU1taiKMqLmf0ElZBoauPUt6AAAAAASUVORK5CYII=') no-repeat rgba(0, 0, 0, 0.4) !important;
+}
+.ui-icon-kalkulator{
+
+}
+.ui-icon-lista{
+
+}
+#Lista a{
+    text-align:center !important;
+}
