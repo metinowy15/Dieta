@@ -9,6 +9,7 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/Script1.js"></script>
+    <script src="js/Script2.js"></script>
     <script src="cordova.js"></script>
 </head>
 <body>
@@ -19,7 +20,7 @@
             <div data-role="navbar">
                 <ul>
                     <li><a href="#ListaProduktow">Lista Produktów</a></li>
-                    <li><a href="#">Kalkulator</a></li>
+                    <li><a href="#Kalkulator">Kalkulator</a></li>
                     <li><a href="#">Posiłki</a></li>
                     <li><a href="#">Lista posiłków</a></li>
                     
@@ -30,11 +31,33 @@
             <input id="Wyszukiwarka" type="text" placeholder="nazwa produktu" />
             <button id="Wyszukaj" data-icon="search"class="ui-btn ui-btn-b">Szukaj</button>
             <ol id="Lista" data-role="listview">
-                <li class="lista">List Item</li>
-                <li class="lista">sdasa</li>
-                <li class="lista">zzz</li>
+
             </ol>
         </div>
         </div>
+
+    <div id="Kalkulator" data-role="page">
+
+        <div data-role="header" data-theme="b">
+            <h1>Dieta</h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#ListaProduktow">Lista Produktów</a></li>
+                    <li><a href="#Kalkulator">Kalkulator</a></li>
+                    <li><a href="#">Posiłki</a></li>
+                    <li><a href="#">Lista posiłków</a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div id="ListaMatematyczna">
+
+
+        </div>
+
+
+
+    </div>
 </body>
 </html>
