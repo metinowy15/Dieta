@@ -13,7 +13,7 @@ function start() {
         var objektyZSesji =JSON.parse(sessionStorage.getItem("obj"));
         if (objektyZSesji !== undefined) {
 
-            ListaMatematyczna.innerHTML = objektyZSesji.tablica[0].nazwa;
+           // ListaMatematyczna.innerHTML = objektyZSesji.tablica[0].nazwa;
        }
 
 
