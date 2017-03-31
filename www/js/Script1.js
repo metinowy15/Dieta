@@ -35,7 +35,7 @@ function start() {
 
 function startTelefonu() {
 
-    navigator.notification.alert("Witamy w naszej aplikacji0", function () { }, "Zrobione", "ok");
+    navigator.notification.alert("Witamy w naszej aplikacji", function () { }, "Zrobione", "ok");
 }
 
 function nowyElementLi(obiektProduktu)
@@ -54,7 +54,7 @@ function nowyElementLi(obiektProduktu)
                 for (let z = 0; z < tmpObj.tablica.length; z++) {//sprawdzam czy w jego tablicy nie ma juz obiektu ktory chce dodac,
                     if (tmpObj.tablica[z].nazwa === obiektProduktu.nazwa) {
                         
-                        navigator.notification.alert(obiektProduktu.nazwa + " jest ju¿ dodany,przejdz do kalkulatora i zobacz", function () { },"Ju¿ Jest!","ok");
+                        navigator.notification.alert(obiektProduktu.nazwa + " jest juz dodany,przejdz do kalkulatora i zobacz", function () { },"Juz Jest!","ok");
                         return;//jesli jest koncze funkcje i wyswietlam komunikat jesli nie:
                     }
 
@@ -74,7 +74,7 @@ function nowyElementLi(obiektProduktu)
             sessionStorage.setItem("obj", JSON.stringify(tmpObj));//
 
             }
-            navigator.notification.alert("Wybrales "+ obiektProduktu.nazwa + ", przejdŸ to kalkulatora aby przeliczyc wartosci odzywcze.", function () { }, "Zrobione!", "ok");
+            navigator.notification.alert("Wybrales "+ obiektProduktu.nazwa + ", przejdz do kalkulatora aby przeliczyc wartosci odzywcze.", function () { }, "Zrobione!", "ok");
 
 
     })
