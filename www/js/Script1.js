@@ -54,7 +54,7 @@ function nowyElementLi(obiektProduktu)
                 for (let z = 0; z < tmpObj.tablica.length; z++) {//sprawdzam czy w jego tablicy nie ma juz obiektu ktory chce dodac,
                     if (tmpObj.tablica[z].nazwa === obiektProduktu.nazwa) {
                         
-                        navigator.notification.alert(obiektProduktu.nazwa + " jest ju¿ dodany,przejdz do kalkulatora i zobacz");
+                        navigator.notification.alert(obiektProduktu.nazwa + " jest ju¿ dodany,przejdz do kalkulatora i zobacz", function () { },"Ju¿ Jest!","ok");
                         return;//jesli jest koncze funkcje i wyswietlam komunikat jesli nie:
                     }
 
