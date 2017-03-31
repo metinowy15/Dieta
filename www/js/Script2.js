@@ -24,6 +24,7 @@ function start() {
         var objektyZSesji =JSON.parse(sessionStorage.getItem("obj"));
         if (objektyZSesji !== undefined) {
             ListaKalkulator = document.getElementById("ListaKalkulator");
+            ListaKalkulator.empty();
             for (let i = 0; i < objektyZSesji.tablica.length; i++) {
                 
                 let nowy = document.createElement("li");
@@ -86,5 +87,11 @@ function mechanizmPrzeliczajacy(obiektDoPrzeliczenia,iloscGram) {
         sole: noweSole,
         ilosc:iloscGram
 
+    }
+}
+//Czyszczenie listy
+Node.prototype.empty = function () {
+    while (this.firstChild) {
+        this.removeChild(this.firstChild);
     }
 }
