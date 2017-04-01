@@ -1,25 +1,59 @@
 window.addEventListener("DOMContentLoaded", start);
-var obiektZ;
-let zero;
+
+let posilek = [];
 function start() {
-  
-    zero = document.getElementById("zero");
+    
+    
    
     $(document).on("pageshow", "#Posilki", function () {
      
-       
-        
+      var Czeski = document.getElementById("Czeski");
+      var ukrytyDiv = Czeski.childNodes[1];
+      ukrytyDiv.empty();
         if (sessionStorage.getItem("kalkObj") === null) {
             
             navigator.notification.alert("Nie dodales zadnych produktow, przejdz do kalkulatora albo listy produktow", function () { }, "Pusto!", "ok");
             return;
         }
-        console.log("start z 3");
-         obiektZ = JSON.parse(sessionStorage.getItem("kalkObj"));
-         for (let z = 0; z <obiektZ.tablica.length; z++) {
-             console.log("sdaa");
-           zero.innerHTML += " <br/> " + obiektZ.tablica[z].nazwa + " " + obiektZ.tablica[z].ilosc + " " + obiektZ.tablica[z].kalorie;
+        
+        var obiektZ = JSON.parse(sessionStorage.getItem("kalkObj"));
+         for (let i = 0; i <obiektZ.tablica.length; i++) {
+             nowyElementOption(obiektZ.tablica[i],ukrytyDiv,i);
+           
         }
     })
     
+}
+function nowyElementOption(obiektProduktu,parentElement,number) {
+
+   
+  
+    var nowy = document.createElement("p");
+    nowy.value = number+1;
+    nowy.innerHTML = obiektProduktu.nazwa + ", " + obiektProduktu.ilosc + " gram";
+    nowy.classList.add("kreska");
+    parentElement.appendChild(nowy);
+
+    nowy.addEventListener("click", function () {
+
+        
+        parentElement.removeChild(nowy);
+        pokazListe(obiektProduktu);
+
+
+
+    })
+
+
+}
+function pokazListe(obiektProduktu) {
+
+    posilek[posilek.length] = obiektProduktu;
+
+}
+//Czyszczenie listy
+Node.prototype.empty = function () {
+    while (this.firstChild) {
+        this.removeChild(this.firstChild);
+    }
 }

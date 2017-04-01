@@ -51,4 +51,7 @@
     margin:20px;
 
 }
-
+.kreska:hover{
+    transition: all 200ms ease-out !important;
+    border-bottom:solid 3px rgba(0, 114, 255, 0.49);
+}
