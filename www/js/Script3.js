@@ -49,6 +49,17 @@ function nowyElementOption(obiektProduktu,parentElement,number) {
 function pokazListe(obiektProduktu) {
 
     posilek[posilek.length] = obiektProduktu;
+    var WierszProduktu = document.getElementById("WierszProduktu");
+    WierszProduktu.empty();
+    for (var i = 0; i < posilek.length; i++) {
+
+        var nowyWiersz = document.createElement("tr");
+        nowyWiersz.innerHTML = "<td>" + posilek[i].nazwa + "</td>" + "<td>" + posilek[i].kalorie + "</td>" + "<td>" + posilek[i].sole + "</td>" + "<td>" + posilek[i].bialka + "</td>";
+        WierszProduktu.appendChild(nowyWiersz);
+    }
+    var razem = document.createElement("tr");
+    razem.innerHTML = "<td>Razem:</td><td>" + sumujKalorie() + "</td><td>" + sumujSole() + "</td><td>" + sumujBialka() + "</td>";
+    WierszProduktu.appendChild(razem);
 
 }
 //Czyszczenie listy
@@ -56,4 +67,38 @@ Node.prototype.empty = function () {
     while (this.firstChild) {
         this.removeChild(this.firstChild);
     }
+}
+
+function sumujKalorie(){
+    var suma=0;
+    for(var i=0;i<posilek.length;i++){
+
+        suma+=posilek[i].kalorie;
+
+
+    }
+    return suma;
+
+}
+function sumujBialka(){
+    var suma=0;
+    for(var i=0;i<posilek.length;i++){
+
+        suma=suma+posilek[i].bialka;
+
+
+    }
+    return suma;
+
+}
+function sumujSole(){
+    var suma=0;
+    for(var i=0;i<posilek.length;i++){
+
+        suma+=posilek[i].sole;
+
+
+    }
+    return suma;
+
 }
