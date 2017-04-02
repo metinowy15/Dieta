@@ -62,6 +62,7 @@ function pokazListe(obiektProduktu) {
     WierszProduktu.appendChild(razem);
 
 }
+
 //Czyszczenie listy
 Node.prototype.empty = function () {
     while (this.firstChild) {

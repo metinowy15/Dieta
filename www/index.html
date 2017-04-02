@@ -113,21 +113,17 @@
 
 
 
+                
 
-                <div id="Jedzenie" data-role="collapsible" data-theme="b" data-content-theme="b">
-                    <h4 id="CoJesz">Kiedy zjesz?</h4>
-                    <p class="kreska">sniadanie</p>
-                    <p class="kreska">drugie sniadanie</p>
-                    <p class="kreska">obiad pierwsze danie</p>
-                    <p class="kreska">obiad drugie danie</p>
-                    <p class="kreska">deser</p>
-                    <p class="kreska">podwieczorek</p>
-                    <p class="kreska">kolacja</p>
+                    <div id="Jedzenie" data-role="content">
+                        <label for="NazwaPosilku">Wprowadz nazwe:</label>
+                        <input type="text" id="NazwaPosilku" />
+                        <label for="Czas">Kiedy zjesz?</label>
+                        <input data-theme="b" data-content-theme="b" type="time" name="timePicker1" id="Czas" value="10:00">
+                        <input id="DodajPosilek" type="submit" value="Dodaj" />
+                    </div>
+
                 </div>
-
-
-
-            </div>
       
      
 
