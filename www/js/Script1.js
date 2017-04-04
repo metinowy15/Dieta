@@ -102,49 +102,56 @@ tabTmp:[
     nazwa: "cipsy",
     kalorie: 300,
     bialka: 30,
-    sole: 50,
+    weglowodane: 50,
+    tluszcze:22,
     kategoria: "przek¹ska"
 },
  {
     nazwa: "banan",
     kalorie: 90,
     bialka: 50,
-    sole: 0,
+    weglowodane: 0,
+    tluszcze: 221,
     kategoria: "owoc"
 },
  {
     nazwa: "sa³ata",
     kalorie: 10,
     bialka: 10,
-    sole: 10,
+    weglowodane: 10,
+    tluszcze: 31,
     kategoria: "warzywa"
 },
  {
     nazwa: "piers z kurczaka",
     kalorie: 300,
     bialka: 30,
-    sole: 50,
+    weglowodane: 50,
+    tluszcze: 99,
     kategoria: "mieso"
 },
 {
     nazwa: "schabowy",
     kalorie: 700,
     bialka: 60,
-    sole: 60,
+    weglowodane: 60,
+    tluszcze: 12,
     kategoria: "mieso"
 },
  {
     nazwa: "ziemniaki",
     kalorie: 200,
     bialka: 35,
-    sole: 10,
+    weglowodane: 10,
+    tluszcze: 41,
     kategoria: "warzywa"
 },
 {
     nazwa: "ziemniaki gotowane",
     kalorie: 500,
     bialka: 21,
-    sole: 3,
+    weglowodane: 3,
+    tluszcze: 100,
     kategoria: "warzywa"
 }
 ]

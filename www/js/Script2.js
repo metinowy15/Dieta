@@ -11,7 +11,7 @@ let obiektPrzeliczony;
 var test;
 
 function start() {
-
+    let zbir;
     PrzyciskOblicz = document.getElementById("PrzyciskOblicz");
     DodajDoPosilku = document.getElementById("DodajDoPosilku");
     Waga = document.getElementById("Waga");
@@ -20,40 +20,17 @@ function start() {
     DodajDoPosilku.addEventListener("click", dodajDoSesji);
     Usun = document.getElementById("Usun");
     Usun.addEventListener("click", usun);
+    
    
    //tworzy liste dodanych produktów z sessionStorage przy kazdym przejsciu do zakladki kalkulator
-    $(document).on("pageshow", "#Kalkulator", function () {
-        if (sessionStorage.getItem("obj") === null) {
-            navigator.notification.alert("Nie dodales zadnych produktow, przejdz do zakladki lista produktow", function () { }, "Pusto!", "ok");
-            return;
-        }
-        var objektyZSesji =JSON.parse(sessionStorage.getItem("obj"));
-        if (objektyZSesji !== undefined) {
-            ListaKalkulator = document.getElementById("ListaKalkulator");
-            ListaKalkulator.empty();
-            for (let i = 0; i < objektyZSesji.tablica.length; i++) {
-                
-                let nowy = document.createElement("li");
-                    nowy.classList.add('lista', 'ui-li-static', 'ui-body-inherit');
-                    nowy.innerHTML = objektyZSesji.tablica[i].nazwa;
-                    nowy.addEventListener("click", function () {
-
-                        pokazProdukt(objektyZSesji.tablica[i])
-                        obiektKlikniety = objektyZSesji.tablica[i];//ustawia obiekt do przeliczenia
-                })
-                ListaKalkulator.appendChild(nowy);
-
-            }
-       }
-
-
-    })
+    $(document).on("pageshow", "#Kalkulator", reloadKalkulator);
    
 }
+
 //po kliknieciu produktu pokazuje go
 function pokazProdukt(obiektProduktu) {
     Produkt = document.getElementById("Produkt");
-    Produkt.innerHTML = "<h1>"+obiektProduktu.nazwa+"</h1><br/><h2>W 100 gramach:</h3><br/><h3>Kalorii:" + obiektProduktu.kalorie + "</h3><br/><h3>Bialka:" + obiektProduktu.bialka + "</h3><br/><h3>Sole:" + obiektProduktu.sole;
+    Produkt.innerHTML = "<h1>" + obiektProduktu.nazwa + "</h1><br/><h2>W 100 gramach:</h3><br/><h3>Kalorii:" + obiektProduktu.kalorie + "</h3><br/><h3>Bialka:" + obiektProduktu.bialka + "</h3><br/><h3>Weglowodane:" + obiektProduktu.weglowodane + "</h3><br/><h3>Tluszcze:"+obiektProduktu.tluszcze+"</h3>";
 
 }
 //Waliduje dane i przekazuje je do mechanizmu obliczajacego na ktorego podstawie uzupelnia htmla o przeliczony obiekt
@@ -72,7 +49,7 @@ function przekazDanych() {
         } else if (Waga.value=="") { navigator.notification.alert("Prosze podac liczbe wieksza od zera", function () { }, "B³¹d!", "ok"); }
         else {
             obiektPrzeliczony = mechanizmPrzeliczajacy(obiektKlikniety, iloscGram);
-            Produkt.innerHTML = "<h1>" + obiektPrzeliczony.nazwa + "</h1><br/><h2>W " + obiektPrzeliczony.ilosc + " gramach:</h3><br/><h3>Kalorii:" + obiektPrzeliczony.kalorie + "</h3><br/><h3>Bialka:" + obiektPrzeliczony.bialka + "</h3><br/><h3>Sole:" + obiektPrzeliczony.sole;
+            Produkt.innerHTML = "<h1>" + obiektPrzeliczony.nazwa + "</h1><br/><h2>W " + obiektPrzeliczony.ilosc + " gramach:</h3><br/><h3>Kalorii:" + obiektPrzeliczony.kalorie + "</h3><br/><h3>Bialka:" + obiektPrzeliczony.bialka + "</h3><br/><h3>Weglowodane:" + obiektPrzeliczony.weglowodane + "</h3><br/><h3>Tluszcze:"+obiektPrzeliczony.tluszcze+"</h3>";
         }
     }
    
@@ -83,14 +60,16 @@ function mechanizmPrzeliczajacy(obiektDoPrzeliczenia,iloscGram) {
 
     noweKalorie = (obiektDoPrzeliczenia.kalorie * iloscGram) / 100;
     noweBialka = (obiektDoPrzeliczenia.bialka * iloscGram) / 100;
-    noweSole=(obiektDoPrzeliczenia.sole * iloscGram) / 100;
+    noweWegle = (obiektDoPrzeliczenia.weglowodane * iloscGram) / 100;
+    noweTluszcze = (obiektDoPrzeliczenia.tluszcze * iloscGram) / 100;
 
     return {
         nazwa: obiektDoPrzeliczenia.nazwa,
         kategoria:obiektDoPrzeliczenia.kategoria,
         kalorie: noweKalorie,
         bialka: noweBialka,
-        sole: noweSole,
+        weglowodane: noweWegle,
+        tluszcze:noweTluszcze,
         ilosc:iloscGram
 
     }
@@ -138,7 +117,7 @@ function dodajDoSesji() {
 }
 function usun()
 {
-    var doUsuniecia;
+  
     var doZmienienia = JSON.parse(sessionStorage.getItem("obj"));
     for (let i = 0; i < doZmienienia.tablica.length; i++) {
 
@@ -148,10 +127,12 @@ function usun()
             doZmienienia.tablica.splice(i, 1);
             var dlaSesji = JSON.stringify(doZmienienia);
             sessionStorage.setItem("obj", dlaSesji);
-            location.reload();
+
+            reloadKalkulator();
 
 
         }
+        
 
 
     }
@@ -159,6 +140,32 @@ function usun()
 
 
 
+
+
+}
+function reloadKalkulator() {
+    if (sessionStorage.getItem("obj") === null) {
+        navigator.notification.alert("Nie dodales zadnych produktow, przejdz do zakladki lista produktow", function () { }, "Pusto!", "ok");
+        return;
+    }
+    var objektyZSesji =JSON.parse(sessionStorage.getItem("obj"));
+    if (objektyZSesji !== undefined) {
+        ListaKalkulator = document.getElementById("ListaKalkulator");
+        ListaKalkulator.empty();
+        for (let i = 0; i < objektyZSesji.tablica.length; i++) {
+                
+            let nowy = document.createElement("li");
+            nowy.classList.add('lista', 'ui-li-static', 'ui-body-inherit');
+            nowy.innerHTML = objektyZSesji.tablica[i].nazwa;
+            nowy.addEventListener("click", function () {
+               
+                pokazProdukt(objektyZSesji.tablica[i])
+                obiektKlikniety = objektyZSesji.tablica[i];//ustawia obiekt do przeliczenia
+            })
+            ListaKalkulator.appendChild(nowy);
+
+        }
+    }
 
 
 }
