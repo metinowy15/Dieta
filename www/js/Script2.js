@@ -2,28 +2,62 @@ window.addEventListener("DOMContentLoaded", start);
 
 let ListaKalkulator;
 let PrzyciskOblicz;
-let DodajDoPosilku;
 let Waga;
 let Usun;
 let Produkt;
-let obiektKlikniety;
 let obiektPrzeliczony;
 var test;
 
 function start() {
     let zbir;
+    let obiektKlikniety;
+    let DodajDoPosilku = document.getElementById("DodajDoPosilku");
     PrzyciskOblicz = document.getElementById("PrzyciskOblicz");
-    DodajDoPosilku = document.getElementById("DodajDoPosilku");
     Waga = document.getElementById("Waga");
-    PrzyciskOblicz.addEventListener("click", przekazDanych);
-    DodajDoPosilku = document.getElementById("DodajDoPosilku");
-    DodajDoPosilku.addEventListener("click", dodajDoSesji);
+    //tworzy liste dodanych produktów z sessionStorage przy kazdym przejsciu do zakladki kalkulator
+    $(document).on("pageshow", "#Kalkulator", function () {
+
+        reloadKalkulator(obiektKlikniety);
+    });
+    PrzyciskOblicz.addEventListener("click", function () {
+
+        if (obiektKlikniety == undefined) {
+            navigator.notification.alert("Nie wybrales obiektu do przeliczenia", function () { }, "Pusto!", "ok");
+
+
+        } else {
+            Waga.value.trim();
+            var iloscGram = parseInt(Waga.value);
+            if (iloscGram <= 0) {
+                navigator.notification.alert("Prosze podac liczbe wieksza od zera", function () { }, "B³¹d!", "ok");
+
+            } else if (Waga.value == "") { navigator.notification.alert("Prosze podac liczbe wieksza od zera", function () { }, "B³¹d!", "ok"); }
+            else {
+                obiektPrzeliczony = mechanizmPrzeliczajacy(obiektKlikniety, iloscGram);
+                Produkt.innerHTML = "<h1>" + obiektPrzeliczony.nazwa + "</h1><br/><h2>W " + obiektPrzeliczony.ilosc + " gramach:</h3><br/><h3>Kalorii:" + obiektPrzeliczony.kalorie + "</h3><br/><h3>Bialka:" + obiektPrzeliczony.bialka + "</h3><br/><h3>Weglowodane:" + obiektPrzeliczony.weglowodane + "</h3><br/><h3>Tluszcze:" + obiektPrzeliczony.tluszcze + "</h3>";
+            }
+        }
+
+    });
+
+    DodajDoPosilku.addEventListener("click", function () {
+
+
+        var czyDodalo = addToSession(obiektPrzeliczony, "kalkObj");
+        if (czyDodalo === true) {
+            navigator.notification.alert("Wybrales " + obiektPrzeliczony.nazwa + ", przejdz do posilki zeby skomponowaæ swoj posilek.", function () { }, "Zrobione!", "ok");
+        } else if(czyDodalo===false) {
+            navigator.notification.alert(obiektPrzeliczony.nazwa + " jest juz dodany,przejdz do kalkulatora i zobacz", function () { }, "Juz Jest!", "ok");
+        } else if (czyDodalo === 1) {
+            navigator.notification.alert("Nic jeszcze nie przeliczyles", function () { }, "Nie ma!", "ok");
+        }
+
+    });
     Usun = document.getElementById("Usun");
     Usun.addEventListener("click", usun);
     
    
-   //tworzy liste dodanych produktów z sessionStorage przy kazdym przejsciu do zakladki kalkulator
-    $(document).on("pageshow", "#Kalkulator", reloadKalkulator);
+
    
 }
 
@@ -34,28 +68,7 @@ function pokazProdukt(obiektProduktu) {
 
 }
 //Waliduje dane i przekazuje je do mechanizmu obliczajacego na ktorego podstawie uzupelnia htmla o przeliczony obiekt
-function przekazDanych() {
 
-    if (obiektKlikniety == undefined) {
-        navigator.notification.alert("Nie wybrales obiektu do przeliczenia", function () { }, "Pusto!", "ok");
-
-
-    } else {
-        Waga.value.trim();
-       var iloscGram = parseInt(Waga.value);
-        if (iloscGram<=0) {
-            navigator.notification.alert("Prosze podac liczbe wieksza od zera", function () { }, "B³¹d!", "ok");
-
-        } else if (Waga.value=="") { navigator.notification.alert("Prosze podac liczbe wieksza od zera", function () { }, "B³¹d!", "ok"); }
-        else {
-            obiektPrzeliczony = mechanizmPrzeliczajacy(obiektKlikniety, iloscGram);
-            Produkt.innerHTML = "<h1>" + obiektPrzeliczony.nazwa + "</h1><br/><h2>W " + obiektPrzeliczony.ilosc + " gramach:</h3><br/><h3>Kalorii:" + obiektPrzeliczony.kalorie + "</h3><br/><h3>Bialka:" + obiektPrzeliczony.bialka + "</h3><br/><h3>Weglowodane:" + obiektPrzeliczony.weglowodane + "</h3><br/><h3>Tluszcze:"+obiektPrzeliczony.tluszcze+"</h3>";
-        }
-    }
-   
-
-
-}
 function mechanizmPrzeliczajacy(obiektDoPrzeliczenia,iloscGram) {
 
     noweKalorie = (obiektDoPrzeliczenia.kalorie * iloscGram) / 100;
@@ -75,46 +88,9 @@ function mechanizmPrzeliczajacy(obiektDoPrzeliczenia,iloscGram) {
     }
 }
 //Czyszczenie listy
-Node.prototype.empty = function () {
-    while (this.firstChild) {
-        this.removeChild(this.firstChild);
-    }
-}
-
-function dodajDoSesji() {
-
-
-    if (obiektPrzeliczony == undefined) {
-        navigator.notification.alert("Nie wybrales obiektu do przeliczenia", function () { }, "Pusto!", "ok");
-    } else if (sessionStorage.getItem("kalkObj") !== null) {//jesli jest taki obiekt w sessionStorage to:
-       var tmpObj = JSON.parse(sessionStorage.getItem("kalkObj"));//robie z niego obiekt JS,
-        for (let z = 0; z < tmpObj.tablica.length; z++) {//sprawdzam czy w jego tablicy nie ma juz obiektu ktory chce dodac,
-            if (tmpObj.tablica[z].nazwa === obiektPrzeliczony.nazwa) {
-
-                navigator.notification.alert(obiektPrzeliczony.nazwa + " jest ju¿ dodany,przejdz do kalkulatora i zobacz", function () { }, "Juz Jest!", "ok");
-                return;//jesli jest koncze funkcje i wyswietlam komunikat jesli nie:
-            }
-
-        }
-        tmpObj.tablica[tmpObj.tablica.length] = obiektPrzeliczony;//dodaje do jego tablicy nowy obiekt,
-        sessionStorage.setItem("kalkObj", JSON.stringify(tmpObj));//wysylam powiekszony obiekt do sessionStorage.
 
 
 
-    } else {
-
-        tmpObj = {
-            tablica: [
-            ]
-        };//Tworze nowy obiekt z pusta tablica do przechowywania informacji o produkcie;
-        tmpObj.tablica[0] = obiektPrzeliczony;//Doda³em produkt do pustej tablicy;
-        sessionStorage.setItem("kalkObj", JSON.stringify(tmpObj));//
-
-    }
-    navigator.notification.alert("Wybrales " + obiektPrzeliczony.nazwa + ", przejdz do posilki zeby skomponowaæ swoj posilek.", function () { }, "Zrobione!", "ok");
-
-
-}
 function usun()
 {
   
@@ -143,7 +119,7 @@ function usun()
 
 
 }
-function reloadKalkulator() {
+function reloadKalkulator(itemToUpdate) {
     if (sessionStorage.getItem("obj") === null) {
         navigator.notification.alert("Nie dodales zadnych produktow, przejdz do zakladki lista produktow", function () { }, "Pusto!", "ok");
         return;
@@ -160,11 +136,13 @@ function reloadKalkulator() {
             nowy.addEventListener("click", function () {
                
                 pokazProdukt(objektyZSesji.tablica[i])
-                obiektKlikniety = objektyZSesji.tablica[i];//ustawia obiekt do przeliczenia
+                itemToUpdate = objektyZSesji.tablica[i];//ustawia obiekt do przeliczenia
             })
             ListaKalkulator.appendChild(nowy);
+            
 
         }
+        
     }
 
 

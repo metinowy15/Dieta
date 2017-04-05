@@ -113,12 +113,7 @@ function narysujTablice() {
 
 
 
-//Czyszczenie listy
-Node.prototype.empty = function () {
-    while (this.firstChild) {
-        this.removeChild(this.firstChild);
-    }
-}
+
 
 
 

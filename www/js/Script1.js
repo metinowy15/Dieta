@@ -74,6 +74,7 @@ Node.prototype.empty = function () {
 
 function addToSession(itemToAdd, nameOnSession) {
 
+    if (itemToAdd == undefined) { return 1;}
     var sessionItem = sessionStorage.getItem(nameOnSession);
     if (sessionItem !== null) {//jesli jest taki obiekt w sessionStorage to:
         tmpObj = JSON.parse(sessionItem);//robie z niego obiekt JS,
