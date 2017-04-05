@@ -1,13 +1,12 @@
 window.addEventListener("DOMContentLoaded", start);
-var myObj;
-let Wyszukiwarka;
-let Wyszukaj;
-let Lista;
+
+
+
 function start() {
   
-    Lista = document.getElementById("Lista");
-    Wyszukiwarka = document.getElementById("Wyszukiwarka");
-    Wyszukaj = document.getElementById("Wyszukaj");
+   let Lista = document.getElementById("Lista");
+  let Wyszukiwarka = document.getElementById("Wyszukiwarka");
+   let Wyszukaj = document.getElementById("Wyszukaj");
     window.addEventListener("deviceready", startTelefonu);
     Wyszukaj.addEventListener("click", function () {
         
@@ -20,7 +19,7 @@ function start() {
 
             if (objTmp.tabTmp[i].nazwa === nazwaSkladnika||objTmp.tabTmp[i].kategoria===nazwaSkladnika) {
 
-                nowyElementLi(objTmp.tabTmp[i]);
+                nowyElementLi(objTmp.tabTmp[i],Lista);
 
             }
 
@@ -38,7 +37,7 @@ function startTelefonu() {
     navigator.notification.alert("Witamy w naszej aplikacji", function () { }, "Zrobione", "ok");
 }
 
-function nowyElementLi(obiektProduktu)
+function nowyElementLi(obiektProduktu,parentElement)
 {
     var tmpObj;
     var nowy = document.createElement("li");
@@ -49,36 +48,15 @@ function nowyElementLi(obiektProduktu)
 
         nowy.addEventListener("click", function () {
 
-            if (sessionStorage.getItem("obj")!==null) {//jesli jest taki obiekt w sessionStorage to:
-                tmpObj = JSON.parse(sessionStorage.getItem("obj"));//robie z niego obiekt JS,
-                for (let z = 0; z < tmpObj.tablica.length; z++) {//sprawdzam czy w jego tablicy nie ma juz obiektu ktory chce dodac,
-                    if (tmpObj.tablica[z].nazwa === obiektProduktu.nazwa) {
-                        
-                        navigator.notification.alert(obiektProduktu.nazwa + " jest juz dodany,przejdz do kalkulatora i zobacz", function () { },"Juz Jest!","ok");
-                        return;//jesli jest koncze funkcje i wyswietlam komunikat jesli nie:
-                    }
+          var czyDodal= addToSession(obiektProduktu, "obj");
+          if (czyDodal === true) {
 
-                }
-                tmpObj.tablica[tmpObj.tablica.length] = obiektProduktu;//dodaje do jego tablicy nowy obiekt,
-                sessionStorage.setItem("obj", JSON.stringify(tmpObj));//wysylam powiekszony obiekt do sessionStorage.
-
-
-
-            } else {
-
-            tmpObj = {
-                tablica: [
-                ]
-            };//Tworze nowy obiekt z pusta tablica do przechowywania informacji o produkcie;
-            tmpObj.tablica[0] = obiektProduktu;//Doda³em produkt do pustej tablicy;
-            sessionStorage.setItem("obj", JSON.stringify(tmpObj));//
-
-            }
-            navigator.notification.alert("Wybrales "+ obiektProduktu.nazwa + ", przejdz do kalkulatora aby przeliczyc wartosci odzywcze.", function () { }, "Zrobione!", "ok");
-
-
+              navigator.notification.alert("Wybrales " + obiektProduktu.nazwa + ", przejdz do kalkulatora zeby obliczyc jego wartosci odzywcze.", function () { }, "Zrobione!", "ok");
+          } else {
+              navigator.notification.alert(obiektProduktu.nazwa + " jest juz dodany", function () { }, "Juz Jest!", "ok");
+          }
     })
-    Lista.appendChild(nowy);//dodaje element do listy
+    parentElement.appendChild(nowy);//dodaje element do listy
 
 }
 
@@ -91,6 +69,40 @@ Node.prototype.empty = function () {
     while (this.firstChild) {
         this.removeChild(this.firstChild);
     }
+}
+
+
+function addToSession(itemToAdd, nameOnSession) {
+
+    var sessionItem = sessionStorage.getItem(nameOnSession);
+    if (sessionItem !== null) {//jesli jest taki obiekt w sessionStorage to:
+        tmpObj = JSON.parse(sessionItem);//robie z niego obiekt JS,
+        for (let z = 0; z < tmpObj.tablica.length; z++) {//sprawdzam czy w jego tablicy nie ma juz obiektu ktory chce dodac,
+            if (tmpObj.tablica[z].nazwa === itemToAdd.nazwa) {
+
+                
+                return false;//jesli jest koncze funkcje  jesli nie:
+            }
+
+        }
+        tmpObj.tablica[tmpObj.tablica.length] = itemToAdd;//dodaje do jego tablicy nowy obiekt,
+        sessionStorage.setItem(nameOnSession, JSON.stringify(tmpObj));//wysylam powiekszony obiekt do sessionStorage.
+
+
+
+    } else {
+
+        tmpObj = {
+            tablica: [
+            ]
+        };//Tworze nowy obiekt z pusta tablica do przechowywania informacji o produkcie;
+        tmpObj.tablica[0] = itemToAdd;//Doda³em produkt do pustej tablicy;
+        sessionStorage.setItem(nameOnSession, JSON.stringify(tmpObj));//
+
+        
+
+    }
+    return true;
 }
 
 //Przykladowe Repozytorium
