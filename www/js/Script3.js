@@ -35,6 +35,7 @@ function start3() {
             }
 
         }
+        
         var czyDodal = addToSession(eatObj, "eatObj");
         if (czyDodal === false) {
             navigator.notification.alert(eatObj.nazwa + " jest juz dodany", function () { }, "Juz Jest!", "ok");
@@ -45,7 +46,8 @@ function start3() {
         if (czyDodal === true) {
 
             navigator.notification.alert("Dodales nowy posilek do swojej listy", function () { }, "Zrobione!", "ok");
-            WierszProduktu.empty();
+            WierszProduktu.innerHTML = "";
+            posilek = [];
             NazwaPosilku.value = "";
         }
        
