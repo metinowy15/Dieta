@@ -10,7 +10,7 @@ function start() {
         Wyszukaj.addEventListener("click", function () {
         
         var nazwaSkladnika = Wyszukiwarka.value.toLowerCase();
-        Lista.empty();
+        Lista.empty();//czysci liste przy kazdym wszyszukiwaniu
         //tutaj Ajax, który wywo³a skrypt php, który zwraca JSONA z bazy danych jesli w nazwie produktu wystepuje zmienna $nazwaSkladnika po czym przerobi to na obiekt JS
         //Wykorzystane tymczasowe repozytorium dla testów
 
@@ -18,8 +18,7 @@ function start() {
 
             if (objTmp.tabTmp[i].nazwa === nazwaSkladnika||objTmp.tabTmp[i].kategoria===nazwaSkladnika) {
 
-                newElementLi(objTmp.tabTmp[i], Lista, callbackToNewElement);
-
+                newElementLi(objTmp.tabTmp[i], Lista, callbackToNewElement);//Tworzy nowy element Li uzywajac funkkcji ogolnej 
             }
 
         }
@@ -28,7 +27,7 @@ function start() {
     
 }
 
-
+//pokazuje informacje jest to callback przyjmujacy parametr
 
 function callbackToNewElement(newElement) {
     return function (data) {

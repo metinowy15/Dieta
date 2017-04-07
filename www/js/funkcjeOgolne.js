@@ -1,23 +1,33 @@
 
 
-function mechanizmPrzeliczajacy(obiektDoPrzeliczenia, iloscGram) {
+function deleteOnSession(objectToDelete,nameOnSession,callback) {
+    var forSession;
+    var objectOnSession = JSON.parse(sessionStorage.getItem(nameOnSession));
 
-    noweKalorie = (obiektDoPrzeliczenia.kalorie * iloscGram) / 100;
-    noweBialka = (obiektDoPrzeliczenia.bialka * iloscGram) / 100;
-    noweWegle = (obiektDoPrzeliczenia.weglowodane * iloscGram) / 100;
-    noweTluszcze = (obiektDoPrzeliczenia.tluszcze * iloscGram) / 100;
 
-    return {
-        nazwa: obiektDoPrzeliczenia.nazwa,
-        kategoria: obiektDoPrzeliczenia.kategoria,
-        kalorie: noweKalorie,
-        bialka: noweBialka,
-        weglowodane: noweWegle,
-        tluszcze: noweTluszcze,
-        ilosc: iloscGram
+    for (let i = 0; i < objectOnSession.tablica.length; i++) {
+
+        if (objectOnSession.tablica[i].nazwa === objectToDelete.nazwa) {
+
+
+            objectOnSession.tablica.splice(i, 1);
+            dlaSesji = JSON.stringify(objectOnSession);
+            sessionStorage.setItem(nameOnSession, dlaSesji);
+
+            if (typeof callback !== 'function') {
+                callback = false;
+            }
+            if (callback) {
+
+                callback();
+            }
+
+        }
 
     }
+
 }
+
 
 
 //funkcja dodaje nowy element Li do podanego w zmiennej *parentElement* elementu DOM ,tworzy go na podstawie zmiennej *object*

@@ -49,7 +49,10 @@ function start() {
 
     });
 
-    Usun.addEventListener("click", usun);
+    Usun.addEventListener("click", function () {
+
+        deleteOnSession(obiektKlikniety, "obj", reloadKalkulator);
+    });
     
    
 
@@ -67,37 +70,12 @@ function pokazProdukt(obiektProduktu,ileGram) {
 }
 
 
-
-
-function usun()
-{
-    var dlaSesji; 
-    var objectOnSession = JSON.parse(sessionStorage.getItem("obj"));
-
-
-    for (let i = 0; i < objectOnSession.tablica.length; i++) {
-
-        if (objectOnSession.tablica[i].nazwa === obiektKlikniety.nazwa) {
-
-
-            objectOnSession.tablica.splice(i, 1);
-            dlaSesji = JSON.stringify(objectOnSession);
-            sessionStorage.setItem("obj", dlaSesji);
-
-            reloadKalkulator();
-
-        }
-        
-    }
-    
-}
-
 function reloadKalkulator() {
     var objectOnSession;
     var ListaKalkulator = document.getElementById("ListaKalkulator");
 
     if (sessionStorage.getItem("obj") === null) {
-        navigator.notification.alert("Nie dodales zadnych produktow, przejdz do zakladki lista produktow", function () { }, "Pusto!", "ok");
+        navigator.notification.alert("Nie dodales zadnych produktow, przejdz do zakladki lista produktow", function () { window.location.href = "#ListaProduktow"; }, "Pusto!", "ok");
         return;
     }
         objectOnSession =JSON.parse(sessionStorage.getItem("obj"));
