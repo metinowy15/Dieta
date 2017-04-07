@@ -1,8 +1,8 @@
-window.addEventListener("DOMContentLoaded", start);
+window.addEventListener("DOMContentLoaded", start3);
 
 let posilek = [];
 var WierszProduktu;
-function start() {
+function start3() {
         
     let UsunZTabeli = document.getElementById("UsunZTabeli");
 
@@ -25,10 +25,12 @@ function start() {
 
         var eatObj = {};
         if (posilek.length !== 0) {
+            let waga = sumujWage(posilek);
             eatObj = {
                 nazwa: NazwaPosilku.value,
                 czas: Czas.value,
-                produktyTab: posilek
+                produktyTab: posilek,
+                waga:waga
 
             }
 
@@ -76,6 +78,7 @@ function nowyElementOption(obiektProduktu,parentElement,number) {
 function narysujTablice() {
     var nowyWiersz;
     var razem;
+    var waga;
     
     WierszProduktu.empty();//czysci stara tabelke
     for (let i = 0; i < posilek.length; i++) {
@@ -85,8 +88,11 @@ function narysujTablice() {
         WierszProduktu.appendChild(nowyWiersz);
     }
     razem = document.createElement("tr");//pod ostatnim wierszem dodaje wiersz razem, ktory uzywajac funkcji przeliczajacych sumuje wartosci
-    razem.innerHTML = "<td>Razem:</td><td>" + sumujKalorie() + "</td><td>" + sumujWegle() + "</td><td>" + sumujBialka() + "</td>" + "</td><td>" + sumujTluszcze() + "</td>";
+    razem.innerHTML = "<td>Razem:</td><td>" + sumujKalorie(posilek) + "</td><td>" + sumujWegle(posilek) + "</td><td>" + sumujBialka(posilek) + "</td>" + "</td><td>" + sumujTluszcze(posilek) + "</td>";
     WierszProduktu.appendChild(razem);
+    waga = document.createElement("tr");//pod razem dodaje informacje o wadze;
+    waga.innerHTML = "<td>Waga:" + sumujWage(posilek) + " g</td>";
+    WierszProduktu.appendChild(waga);
 
 }
 

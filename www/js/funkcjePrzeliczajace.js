@@ -16,47 +16,54 @@ function mechanizmPrzeliczajacy(obiektDoPrzeliczenia, iloscGram) {
 
     }
 }
-
-
 //Funkcje sumujace
-function sumujKalorie() {
+function sumujWage(tabToSum) {
     var suma = 0;
-    for (var i = 0; i < posilek.length; i++) {
+    for (var i = 0; i < tabToSum.length; i++) {
+        suma += tabToSum[i].ilosc;
+    }
+    return Round(suma, 2);
+}
 
-        suma += posilek[i].kalorie;
+
+function sumujKalorie(tabToSum) {
+    var suma = 0;
+    for (var i = 0; i < tabToSum.length; i++) {
+
+        suma += tabToSum[i].kalorie;
 
 
     }
     return Round(suma, 2);
 
 }
-function sumujBialka() {
+function sumujBialka(tabToSum) {
     var suma = 0;
-    for (var i = 0; i < posilek.length; i++) {
+    for (var i = 0; i < tabToSum.length; i++) {
 
-        suma += posilek[i].bialka;
+        suma += tabToSum[i].bialka;
 
 
     }
     return Round(suma, 2);
 
 }
-function sumujWegle() {
+function sumujWegle(tabToSum) {
     var suma = 0;
-    for (var i = 0; i < posilek.length; i++) {
+    for (var i = 0; i < tabToSum.length; i++) {
 
-        suma += posilek[i].weglowodane;
+        suma += tabToSum[i].weglowodane;
 
 
     }
     return Round(suma, 2);
 
 }
-function sumujTluszcze() {
+function sumujTluszcze(tabToSum) {
     var suma = 0;
-    for (var i = 0; i < posilek.length; i++) {
+    for (var i = 0; i < tabToSum.length; i++) {
 
-        suma += posilek[i].tluszcze;
+        suma += tabToSum[i].tluszcze;
 
 
 

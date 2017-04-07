@@ -1,9 +1,9 @@
-window.addEventListener("DOMContentLoaded", start);
+window.addEventListener("DOMContentLoaded", start2);
 
 let obiektKlikniety;
 
 
-function start() { 
+function start2() { 
     let obiektPrzeliczony;
     let Produkt = document.getElementById("Produkt");
     let DodajDoPosilku = document.getElementById("DodajDoPosilku");

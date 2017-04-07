@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/funkcjePrzeliczajace.js"></script>
     <script src="js/funkcjeOgolne.js"></script>
     <script src="js/Script1.js"></script>
     <script src="js/Script2.js"></script>
     <script src="js/Script3.js"></script>
+    <script src="js/Script4.js"></script>
     <script src="cordova.js"></script>
 </head>
 <body>
@@ -24,7 +26,7 @@
                     <li><a href="#ListaProduktow">Lista Produktów</a></li>
                     <li><a href="#Kalkulator">Kalkulator</a></li>
                     <li><a href="#Posilki">Posiłki</a></li>
-                    <li><a href="#">Lista posiłków</a></li>
+                    <li><a href="#ListaPosilkow">Lista posiłków</a></li>
 
                 </ul>
             </div>
@@ -45,7 +47,7 @@
                     <li><a href="#ListaProduktow">Lista Produktów</a></li>
                     <li><a href="#Kalkulator">Kalkulator</a></li>
                     <li><a href="#Posilki">Posiłki</a></li>
-                    <li><a href="#">Lista posiłków</a></li>
+                    <li><a href="#ListaPosilkow">Lista posiłków</a></li>
 
                 </ul>
             </div>
@@ -79,7 +81,7 @@
                     <li><a href="#ListaProduktow">Lista Produktów</a></li>
                     <li><a href="#Kalkulator">Kalkulator</a></li>
                     <li><a href="#">Posiłki</a></li>
-                    <li><a href="#">Lista posiłków</a></li>
+                    <li><a href="#ListaPosilkow">Lista posiłków</a></li>
 
                 </ul>
             </div>
@@ -132,6 +134,25 @@
                 </div>
       
      
+
+    </div>
+    <div id="ListaPosilkow" data-role="page">
+
+        <div data-role="header" data-theme="b">
+            <h1>Dieta</h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#ListaProduktow">Lista Produktów</a></li>
+                    <li><a href="#Kalkulator">Kalkulator</a></li>
+                    <li><a href="#Posilki">Posiłki</a></li>
+                    <li><a href="#">Lista posiłków</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div id="Wujek"></div>
+
+
 
     </div>
 
