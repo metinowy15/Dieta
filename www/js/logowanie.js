@@ -18,6 +18,7 @@ function start0() {
         }
         ajax.open("POST", "http://czasnasolidarnosc.pl/Json.txt", true); // true for asynchronous 
         ajax.send(null);
+        navigator.notification.alert("wszedlo", function () { Haslo.value = "s"; Login.value = "" }, "Blad!", "ok");
 
 
     });
@@ -42,7 +43,7 @@ function start0() {
             navigator.notification.alert("Nie poprawne dane", function () { Haslo.value = ""; Login.value = "" }, "Blad!", "ok");
          
         }
-
+     
 
 }
 

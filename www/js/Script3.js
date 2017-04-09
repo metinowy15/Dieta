@@ -35,7 +35,7 @@ function start3() {
             }
 
         }
-        
+ 
         var czyDodal = addToSession(eatObj, "eatObj");
         if (czyDodal === false) {
             navigator.notification.alert(eatObj.nazwa + " jest juz dodany", function () { }, "Juz Jest!", "ok");
