@@ -53,6 +53,12 @@ Node.prototype.empty = function () {
 }
 
 
+//Zwraca obiekt zrobiony z jsona ktory znajduje sie pod *url*
+
+
+
+
+
 //Funkcja dodaje obiekt *itemToAdd* do tablicy zapisanej w sessionStorage pod nazwa *nameOnSession*
 //zwraca true jesli operacja sie powiedzie
 //zwraca false kiedy obiekt juz jest w tej tablicy
