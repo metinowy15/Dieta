@@ -25,7 +25,7 @@
         <label for="Haslo">Haslo</label>
         <input id="Haslo" type="text" />
         <input id="Zaloguj" type="submit"  data-theme="b" value="Zaloguj" />
-        <input id="Rejestracja" type="submit" value="Rejestruj" />
+        <input id="Rejestracja" onclick="window.location.href = '#NowaRejestracja'" type="submit" value="Rejestruj" />
         
 
     </div>
@@ -41,6 +41,7 @@
                     <li><a href="#Kalkulator">Kalkulator</a></li>
                     <li><a href="#Posilki">Posiłki</a></li>
                     <li><a href="#ListaPosilkow">Lista posiłków</a></li>
+                    <li><a href="#Ustawienia">Ustawienia</a></li>
 
                 </ul>
             </div>
@@ -62,6 +63,7 @@
                     <li><a href="#Kalkulator">Kalkulator</a></li>
                     <li><a href="#Posilki">Posiłki</a></li>
                     <li><a href="#ListaPosilkow">Lista posiłków</a></li>
+                    <li><a href="#Ustawienia">Ustawienia</a></li>
 
                 </ul>
             </div>
@@ -96,6 +98,7 @@
                     <li><a href="#Kalkulator">Kalkulator</a></li>
                     <li><a href="#">Posiłki</a></li>
                     <li><a href="#ListaPosilkow">Lista posiłków</a></li>
+                    <li><a href="#Ustawienia">Ustawienia</a></li>
 
                 </ul>
             </div>
@@ -160,6 +163,7 @@
                     <li><a href="#Kalkulator">Kalkulator</a></li>
                     <li><a href="#Posilki">Posiłki</a></li>
                     <li><a href="#">Lista posiłków</a></li>
+                    <li><a href="#Ustawienia">Ustawienia</a></li>
 
                 </ul>
             </div>
@@ -171,6 +175,52 @@
 
 
         </div>
+
+    </div>
+    <div id="Ustawienia" data-role="page">
+
+        <div data-role="header" data-theme="b">
+            <h1>Dieta</h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#ListaProduktow">Lista Produktów</a></li>
+                    <li><a href="#Kalkulator">Kalkulator</a></li>
+                    <li><a href="#Posilki">Posiłki</a></li>
+                    <li><a href="#ListaPosilkow">Lista posiłków</a></li>
+                    <li><a href="#">Ustawienia</a></li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    <div id="NowaRejestracja" data-role="page">
+
+        <div style="width:160px;margin:0 auto;text-align:center">
+            <h2>Rejestracja</h2>
+            <h3>Login*</h3>
+            <input id="NowyLogin" type="text" />
+            <h3>Haslo*</h3>
+            <input id="NoweHaslo" type="text" />
+            <h3>Twoja Plec*</h3>
+            <select id="NowaPlec" data-theme="b">
+                <option value="M">M</option>
+                <option value="K">K</option>
+            </select>
+            <h3>Twoja waga(w kg)</h3>
+            <input id="NowaWaga" type="number" />
+            <h3>Twoj wzrost(w cm)</h3>
+            <input id="NowyWzrost" type="number" />
+            <h3>Twoj wiek</h3>
+            <input id="NowyWiek" type="number" />
+            <h3>Aktywnosc(PAL)</h3>
+            <input id="NowaAktywnosc" type="number" />
+            <input id="Zatwierdź" type="submit" data-theme="b" value="Zarejestruj"/>
+        </div>
+
 
     </div>
 

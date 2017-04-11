@@ -34,8 +34,7 @@ function start0() {
 
         }
         if (poprawnosc == true) {
-            console.log("weszlo");
-            navigator.notification.alert("Witaj " /*+ login*/, function () { window.location.href = "#ListaProduktow"; }, "Zalogowano!", "ok");
+            navigator.notification.alert("Witaj "+ login, function () { window.location.href = "#ListaProduktow"; }, "Zalogowano!", "ok");
             
         } else {
             console.log("nie dalo rady");

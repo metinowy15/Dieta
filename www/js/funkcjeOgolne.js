@@ -1,4 +1,41 @@
 
+//objekt na podstawie którego bedzie liczone % zaspokojenie kcalów przez dany posilek
+confObj = {
+
+waga:"",
+wiek:"",
+wzrost:"",
+plec:"",
+aktywnosc:"",
+
+getCPM:function(){
+var ppm=0;
+if(this.plec=="M"){
+	ppm=66.47 + (13.75 * this.waga) + (5 * this.wzrost) - (6.75 * this.wiek);
+
+}else{
+
+ppm=665.09 + (9.56 * this.waga) + (1.85 * this.wzrost) - (4.67 * this.wiek);
+}
+return ppm*this.aktywnosc;
+
+},
+setYourSex: function (sex) {
+
+    this.plec = sex;
+},
+setYourParam:function(waga,wiek,wzrost,aktywnosc){
+this.waga=waga;
+this.wiek=wiek;
+this.wzrost=wzrost;
+this.aktywnosc=aktywnosc;
+
+}
+
+
+}
+
+
 
 function deleteOnSession(objectToDelete,nameOnSession,callback) {
     var forSession;
