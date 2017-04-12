@@ -5,7 +5,7 @@ function start0() {
     
     var Login = document.getElementById("Login");
     var Haslo = document.getElementById("Haslo");
-    var Rejestracja = document.getElementById("Zarejestruj");
+    var Rejestracja = document.getElementById("Zatwierdz");
         Rejestracja.addEventListener("click",nowyUzytkownik)
     var Logowanie = document.getElementById("Zaloguj");
     Logowanie.addEventListener("click", function () {
@@ -37,7 +37,6 @@ function start0() {
 
         }
         if (poprawnosc == true) {
-            window.location.href = "#ListaProduktow";//na czas nie okreslonty******
             navigator.notification.alert("Witaj "+ login, function () { window.location.href = "#ListaProduktow"; }, "Zalogowano!", "ok");
             
         } else {
@@ -49,11 +48,87 @@ function start0() {
 
     }
     function nowyUzytkownik() {
+        var NowyLogin = document.getElementById("NowyLogin");
+        var NoweHaslo = document.getElementById("NoweHaslo");
+        var NowyWiek = document.getElementById("NowyWiek");
+        var NowyWzrost = document.getElementById("NowyWzrost");
+        var NowaWaga = document.getElementById("NowaWaga");
+        var NowaPlec = document.getElementById("NowaPlec");
+        var NowaAktywnosc = document.getElementById("NowaAktywnosc");
+        if (NowyLogin.value.trim() == "") {
+
+            navigator.notification.alert("Musisz podac login", function () { }, "Blad!", "ok");
+            return;
+        }
+        if (NoweHaslo.value.trim() == "") {
+
+            navigator.notification.alert("Musisz podac haslo", function () { }, "Blad!", "ok");
+            return;
+        }
+
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                var wynikA = JSON.parse(ajax.responseText);
+                if (nickJuzJest(wynikA)) {
+
+                    navigator.notification.alert("Taki uzytkownik juz jest", function () {}, "Blad!", "ok");
+                    return;
+                } else {
+
+                    var uzytkownik = {
+                        Nick: NowyLogin.value,
+                        Haslo: NoweHaslo.value,
+                        Parametry: {
+                            Wiek: NowyWiek.value,
+                            Wzrost: NowyWzrost.value,
+                            Waga: NowaWaga.value,
+                            Plec: NowaPlec.value,
+                            Aktywnosc: NowaAktywnosc.value
+                        }
+                    }
+
+                    wynikA.tab[wynikA.tab.length] = uzytkownik;
+                    $.ajax({
+                        type: "POST",
+                        url: "http://czasnasolidarnosc.pl/dodaj.php",
+                        data: {
+                            text: JSON.stringify(wynikA)
+                        },
+                        success: function (result) { navigator.notification.alert("Witaj " + NowyLogin.value + " zaloguj sie aby kozystac z aplikacji", function () { window.location.href = "#Logowanie";}, "Blad!", "ok"); }
+                    });
+
+                   
+
+                }
+
+            }
+        }
+        ajax.open("POST", "http://czasnasolidarnosc.pl/Json.txt", true); // true for asynchronous 
+        ajax.send(null);
+
+     
 
 
 
+
+
+
+        function nickJuzJest(wynikA) {
+            for (var i = 0; i < wynikA.tab.length; i++) {
+
+                if (wynikA.tab[i].Nick === NowyLogin.value) {
+
+                    return true;
+                }
+
+        }
+
+
+        }
 
     }
+
 
 
 }
