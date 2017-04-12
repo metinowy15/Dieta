@@ -6,10 +6,12 @@
     <title></title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/funkcjePrzeliczajace.js"></script>
     <script src="js/funkcjeOgolne.js"></script>
+    <script src="js/Ustawienia.js"></script>
     <script src="js/logowanie.js"></script>
     <script src="js/Script1.js"></script>
     <script src="js/Script2.js"></script>
@@ -191,6 +193,21 @@
 
                 </ul>
             </div>
+            <div>
+                
+                <h3>Twoja waga(w kg)</h3>
+                <input id="WagaUstawienia" type="number" />
+                <h3>Twoj wzrost(w cm)</h3>
+                <input id="WzrostUstawienia" type="number" />
+                <h3>Twoj wiek</h3>
+                <input id="WiekUstawienia" type="number" />
+                <h3>Aktywnosc(PAL)</h3>
+                <input id="AktywnoscUstawienia" type="number" />
+                <input id="ZmianaUstawienia" type="submit" value="Zmien" />
+            </div>
+
+
+
         </div>
 
 
@@ -198,31 +215,33 @@
 
     </div>
     <div id="NowaRejestracja" data-role="page">
+        <div data-role="header" data-theme="b">
+            <div style="width:160px;margin:0 auto;text-align:center">
+                <h2>Rejestracja</h2>
+                <h3>Login*</h3>
+                <input id="NowyLogin" type="text"  data-theme="a" />
+                <h3>Haslo*</h3>
+                <input id="NoweHaslo" type="text" data-theme="a" />
+                <h3>Twoja Plec*</h3>
+                <select id="NowaPlec" data-theme="a">
+                    <option value="M">Mezczyzna</option>
+                    <option value="K">Kobieta</option>
+                </select>
+                <h3>Twoja waga(w kg)</h3>
+                <input id="NowaWaga" type="number" />
+                <h3>Twoj wzrost(w cm)</h3>
+                <input id="NowyWzrost" type="number" />
+                <h3>Twoj wiek</h3>
+                <input id="NowyWiek" type="number" />
+                <h3>Aktywnosc(PAL)</h3>
+                <input id="NowaAktywnosc" type="number" />
+                <input id="Zatwierdź" type="submit" data-theme="b" value="Zarejestruj" />
+                <input type="submit" onclick="window.location.href = '#'" value="Powrot" />
+            </div>
+            </div>
 
-        <div style="width:160px;margin:0 auto;text-align:center">
-            <h2>Rejestracja</h2>
-            <h3>Login*</h3>
-            <input id="NowyLogin" type="text" />
-            <h3>Haslo*</h3>
-            <input id="NoweHaslo" type="text" />
-            <h3>Twoja Plec*</h3>
-            <select id="NowaPlec" data-theme="b">
-                <option value="M">M</option>
-                <option value="K">K</option>
-            </select>
-            <h3>Twoja waga(w kg)</h3>
-            <input id="NowaWaga" type="number" />
-            <h3>Twoj wzrost(w cm)</h3>
-            <input id="NowyWzrost" type="number" />
-            <h3>Twoj wiek</h3>
-            <input id="NowyWiek" type="number" />
-            <h3>Aktywnosc(PAL)</h3>
-            <input id="NowaAktywnosc" type="number" />
-            <input id="Zatwierdź" type="submit" data-theme="b" value="Zarejestruj"/>
+
         </div>
-
-
-    </div>
 
 </body>
 </html>

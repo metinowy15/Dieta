@@ -6,7 +6,8 @@ waga:"",
 wiek:"",
 wzrost:"",
 plec:"",
-aktywnosc:"",
+aktywnosc: "",
+nick:"",
 
 getCPM:function(){
 var ppm=0;
@@ -20,9 +21,15 @@ ppm=665.09 + (9.56 * this.waga) + (1.85 * this.wzrost) - (4.67 * this.wiek);
 return ppm*this.aktywnosc;
 
 },
-setYourSex: function (sex) {
-
+setYourInfo: function (nick,sex) {
+    this.nick = nick;
     this.plec = sex;
+},
+getKcalInPercent:function(kalorie){
+
+    var CPM = this.getCPM();
+    return Round(100 * kalorie / CPM,0);
+
 },
 setYourParam:function(waga,wiek,wzrost,aktywnosc){
 this.waga=waga;
@@ -30,6 +37,21 @@ this.wiek=wiek;
 this.wzrost=wzrost;
 this.aktywnosc=aktywnosc;
 
+},
+getObjectToJSON: function () {
+    return{
+        Wiek: this.wiek,
+        Wzrost: this.wzrost,
+        Waga: this.waga,   
+        Plec: this.plec,
+        Aktywnosc:this.aktywnosc
+    }
+
+
+
+},
+    getNick:function(){
+        return this.nick;
 }
 
 

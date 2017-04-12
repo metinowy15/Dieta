@@ -5,6 +5,8 @@ function start0() {
     
     var Login = document.getElementById("Login");
     var Haslo = document.getElementById("Haslo");
+    var Rejestracja = document.getElementById("Zarejestruj");
+        Rejestracja.addEventListener("click",nowyUzytkownik)
     var Logowanie = document.getElementById("Zaloguj");
     Logowanie.addEventListener("click", function () {
         var login = Login.value;
@@ -29,11 +31,13 @@ function start0() {
 
             if (login === wynikA.tab[i].Nick && haslo === wynikA.tab[i].Haslo) {
                 poprawnosc = true;
-
+                confObj.setYourParam(wynikA.tab[i].Parametry.Waga, wynikA.tab[i].Parametry.Wiek, wynikA.tab[i].Parametry.Wzrost, wynikA.tab[i].Parametry.Aktywnosc);
+               confObj.setYourInfo(wynikA.tab[i].Nick,wynikA.tab[i].Parametry.Plec);
             }
 
         }
         if (poprawnosc == true) {
+            window.location.href = "#ListaProduktow";//na czas nie okreslonty******
             navigator.notification.alert("Witaj "+ login, function () { window.location.href = "#ListaProduktow"; }, "Zalogowano!", "ok");
             
         } else {
@@ -43,7 +47,13 @@ function start0() {
         }
      
 
-}
+    }
+    function nowyUzytkownik() {
+
+
+
+
+    }
 
 
 }
