@@ -2,7 +2,6 @@ window.addEventListener("DOMContentLoaded", start0);
 
 function start0() {
    
-    
     var Login = document.getElementById("Login");
     var Haslo = document.getElementById("Haslo");
     var Rejestracja = document.getElementById("Zatwierdz");
@@ -37,6 +36,11 @@ function start0() {
 
         }
         if (poprawnosc == true) {
+            var Info = document.getElementsByClassName("info");
+            for (let z = 0; z <Info.length; z++) {
+                Info[z].innerHTML = confObj.getNick() + " twoje CPM wynosi: " + confObj.getCPM();
+            }
+       
             navigator.notification.alert("Witaj "+ login, function () { window.location.href = "#ListaProduktow"; }, "Zalogowano!", "ok");
             
         } else {
@@ -95,7 +99,7 @@ function start0() {
                         data: {
                             text: JSON.stringify(wynikA)
                         },
-                        success: function (result) { navigator.notification.alert("Witaj " + NowyLogin.value + " zaloguj sie aby kozystac z aplikacji", function () { window.location.href = "#Logowanie";}, "Blad!", "ok"); }
+                        success: function (result) { navigator.notification.alert("Witaj " + NowyLogin.value + " zaloguj sie aby kozystac z aplikacji", function () { window.location.href = "#Logowanie";}, "Nowe Konto", "ok"); }
                     });
 
                    

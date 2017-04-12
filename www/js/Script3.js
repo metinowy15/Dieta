@@ -25,12 +25,14 @@ function start3() {
 
         var eatObj = {};
         if (posilek.length !== 0) {
+            let procenty=confObj.getKcalInPercent(sumujKalorie(posilek));
             let waga = sumujWage(posilek);
             eatObj = {
                 nazwa: NazwaPosilku.value,
                 czas: Czas.value,
                 produktyTab: posilek,
-                waga:waga
+                waga: waga,
+                dziennaDawka:procenty
 
             }
 
@@ -93,7 +95,7 @@ function narysujTablice() {
     razem.innerHTML = "<td>Razem:</td><td>" + sumujKalorie(posilek) + "</td><td>" + sumujWegle(posilek) + "</td><td>" + sumujBialka(posilek) + "</td>" + "</td><td>" + sumujTluszcze(posilek) + "</td>";
     WierszProduktu.appendChild(razem);
     waga = document.createElement("tr");//pod razem dodaje informacje o wadze;
-    waga.innerHTML = "<td>Waga:" + sumujWage(posilek) + " g</td>";
+    waga.innerHTML = "<td>Waga:" + sumujWage(posilek) + " g</td><td colspan='3'>"+confObj.getKcalInPercent(sumujKalorie(posilek))+"% Dziennej dawki kalori</td>" ;
     WierszProduktu.appendChild(waga);
 
 }

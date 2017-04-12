@@ -18,7 +18,7 @@ if(this.plec=="M"){
 
 ppm=665.09 + (9.56 * this.waga) + (1.85 * this.wzrost) - (4.67 * this.wiek);
 }
-return ppm*this.aktywnosc;
+return Round(ppm*this.aktywnosc,0);
 
 },
 setYourInfo: function (nick,sex) {
