@@ -35,7 +35,8 @@
         <splash src="www/img/splash.png" density="port-xxhdpi"/>
         <splash src="www/img/splash.png" density="port-xxxhdpi"/>
     </platform>
- 
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashScreenDelay" value="10000" />
     <allow-navigation href="*" />
     <allow-intent href="*" />
     <access origin="*" />
