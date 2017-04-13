@@ -38,10 +38,10 @@ function start0() {
         if (poprawnosc == true) {
             var Info = document.getElementsByClassName("info");
             for (let z = 0; z <Info.length; z++) {
-                Info[z].innerHTML = confObj.getNick() + " twoje CPM wynosi: " + confObj.getCPM();
+                Info[z].innerHTML =  confObj.getNick() + " twoje CPM wynosi: " + confObj.getCPM()+"<img src='img/ham.png' />" ;
             }
-       
-            navigator.notification.alert("Witaj "+ login, function () { window.location.href = "#ListaProduktow"; }, "Zalogowano!", "ok");
+            window.location.href = "#ListaProduktow";//*Tymczasowe        sdsdsdsdss         **//
+            navigator.notification.alert( "Witaj "+ login, function () { window.location.href = "#ListaProduktow"; }, "Zalogowano!", "ok");
             
         } else {
             console.log("nie dalo rady");

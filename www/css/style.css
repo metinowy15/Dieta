@@ -63,11 +63,41 @@
 #DodajPosilek{
 margin-top:40px!important;
 }
-
-@media screen and (max-width: 639px) {
-
+.tapeta{
 
 
+     background: linear-gradient(to bottom, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%) !important;
+     color:cornflowerblue !important;
+     
+ }
+.info img{
+
+    display:none !important;
+
+
+}
+ 
+@media screen and (max-width: 300px) {
+
+
+.menu li{
+
+height:0px !important;
+overflow:hidden !important;
+
+
+}
+.info img{
+
+    display:block !important;
+    float:left;
+    margin-top:5px;
+
+}
+.info{
+    margin: 0 10px !important;
+    text-align:right !important;
+}
 
 
 
