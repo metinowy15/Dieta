@@ -77,21 +77,34 @@ margin-top:40px!important;
 
 }
  
-@media screen and (max-width: 500px) {
-
+@media screen and (max-width: 400px) {
 
 .menu li{
+    float:none !important;
+    width:unset !important;
+}
+.menu div{
 
 height:0px !important;
 overflow:hidden !important;
 
 
 }
+.menu:hover{
+
+    background-color:blue!important;
+    height:300px;
+}
+.info:hover + .menu div{
+    transition-duration:0.5s !important;
+    height:300px !important;
+
+}
 .info img{
 
     display:block !important;
     float:left;
-    margin-top:5px;
+    margin-top:5px !important;
 
 }
 .info{
