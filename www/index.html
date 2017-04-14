@@ -21,7 +21,7 @@
 </head>
 <body>
 
-    <div id="Logowanie" class="tapeta" data-role="page">
+    <div id="Logowanie" class="tapeta" style="text-align:center" data-role="page">
         <label for="Login">Login</label>
         <input id="Login" type="text" />
         <label for="Haslo">Haslo</label>
@@ -72,7 +72,7 @@
             </div>
         </div>
 
-        <div id="ListaMatematyczna">
+        <div class="srodkowanie">
             <ul>
                 <li data-role="collapsible" data-iconpos="right" data-inset="false">
                     <h2>Produkty</h2>
@@ -80,12 +80,14 @@
                 </li>
             </ul>
             <div id="Produkt"></div>
-
-            <input id="Waga" type="number" />
-            <input id="PrzyciskOblicz" type="submit" value="Oblicz" />
-            <input id="DodajDoPosilku" type="submit" value="Dodaj do posilkow" />
-            <input id="Usun" type="submit" value="Usun z listy" />
         </div>
+          
+     
+            <input id="Waga" type="number" />
+            <input id="PrzyciskOblicz" type="submit" value="Oblicz" data-theme="b" />           
+            <input id="DodajDoPosilku" type="submit" value="Dodaj do posilkow" />
+            <input id="Usun" type="submit" value="Usun z listy" data-theme="b" />
+    
 
 
    
@@ -196,21 +198,22 @@
 
                 </ul>
             </div>
-            <div>
-                
-                <h3>Twoja waga(w kg)</h3>
-                <input id="WagaUstawienia" type="number" />
-                <h3>Twoj wzrost(w cm)</h3>
-                <input id="WzrostUstawienia" type="number" />
-                <h3>Twoj wiek</h3>
-                <input id="WiekUstawienia" type="number" />
-                <h3>Aktywnosc(PAL)</h3>
-                <input id="AktywnoscUstawienia" type="number" />
-                <input id="ZmianaUstawienia" type="submit" value="Zmien" />
-            </div>
 
 
 
+
+        </div>
+        <div style="text-align:center">
+
+            <h3>Twoja waga(w kg)</h3>
+            <input id="WagaUstawienia" type="number" />
+            <h3>Twoj wzrost(w cm)</h3>
+            <input id="WzrostUstawienia" type="number" />
+            <h3 data-theme="b">Twoj wiek</h3>
+            <input id="WiekUstawienia" type="number" />
+            <h3>Aktywnosc(PAL)</h3>
+            <input id="AktywnoscUstawienia" type="number" />
+            <input id="ZmianaUstawienia" type="submit" value="Zmien" data-theme="b" />
         </div>
         <input value="Wyloguj" type="submit" onclick="window.location.href = '#Logowanie'" />
 

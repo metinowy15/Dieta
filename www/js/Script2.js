@@ -65,7 +65,7 @@ function pokazProdukt(obiektProduktu,ileGram) {
         ileGram = "100";
     }
     var wsadzTresc = document.getElementById("Produkt");
-    wsadzTresc.innerHTML = "<h3>" + obiektProduktu.nazwa + ", w "+ ileGram+" gramach:</h3><h4>Kalorii:" + obiektProduktu.kalorie + "</h4><h4>Bialka:" + obiektProduktu.bialka + "</h4><h4>Weglowodane:" + obiektProduktu.weglowodane + "</h4><h4>Tluszcze:"+obiektProduktu.tluszcze+"</h4>";
+    wsadzTresc.innerHTML = "<h3>" + obiektProduktu.nazwa + ", w " + ileGram + " gramach:</h3><div class='polowa'><h4>Kalorii:" + obiektProduktu.kalorie + "</h4><h4>Bialka:" + obiektProduktu.bialka + "</h4></div><div class='polowa'><h4>Weglowodane:" + obiektProduktu.weglowodane + "</h4><h4>Tluszcze:" + obiektProduktu.tluszcze + "</h4></div>";
 
 }
 
