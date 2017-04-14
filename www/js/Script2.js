@@ -1,9 +1,11 @@
 window.addEventListener("DOMContentLoaded", start2);
 
-let obiektKlikniety;
 
 
-function start2() { 
+
+function start2() {
+    let obiektKlikniety;
+    var wsadzTresc = document.getElementById("Produkt");
     let obiektPrzeliczony;
     let Produkt = document.getElementById("Produkt");
     let DodajDoPosilku = document.getElementById("DodajDoPosilku");
@@ -40,7 +42,7 @@ function start2() {
 
         var czyDodalo = addToSession(obiektPrzeliczony, "kalkObj");
         if (czyDodalo === true) {
-            navigator.notification.alert("Wybrales " + obiektPrzeliczony.nazwa + ", przejdz do posilki zeby skomponowaæ swoj posilek.", function () { }, "Zrobione!", "ok");
+            navigator.notification.alert("Wybrales " + obiektPrzeliczony.nazwa + ", przejdz do posilki zeby skomponowaæ swoj posilek.", function () { wsadzTresc.innerHTML = ""; }, "Zrobione!", "ok");
         } else if(czyDodalo===false) {
             navigator.notification.alert(obiektPrzeliczony.nazwa + " jest juz dodany,przejdz do kalkulatora i zobacz", function () { }, "Juz Jest!", "ok");
         } else if (czyDodalo === 1) {
@@ -53,52 +55,53 @@ function start2() {
 
         deleteOnSession(obiektKlikniety, "obj", reloadKalkulator);
     });
-    
-   
+    //po kliknieciu produktu pokazuje go 
+    function pokazProdukt(obiektProduktu, ileGram) {
+        if (ileGram == null) {
+            ileGram = "100";
+        }
+       
+        wsadzTresc.innerHTML = "<h3>" + obiektProduktu.nazwa + ", w " + ileGram + " gramach:</h3><div class='polowa'><h4>Kalorii:" + obiektProduktu.kalorie + "</h4><h4>Bialka:" + obiektProduktu.bialka + "</h4></div><div class='polowa'><h4>Weglowodane:" + obiektProduktu.weglowodane + "</h4><h4>Tluszcze:" + obiektProduktu.tluszcze + "</h4></div>";
 
-   
-}
-
-//po kliknieciu produktu pokazuje go
-function pokazProdukt(obiektProduktu,ileGram) {
-    if (ileGram == null) {
-        ileGram = "100";
     }
-    var wsadzTresc = document.getElementById("Produkt");
-    wsadzTresc.innerHTML = "<h3>" + obiektProduktu.nazwa + ", w " + ileGram + " gramach:</h3><div class='polowa'><h4>Kalorii:" + obiektProduktu.kalorie + "</h4><h4>Bialka:" + obiektProduktu.bialka + "</h4></div><div class='polowa'><h4>Weglowodane:" + obiektProduktu.weglowodane + "</h4><h4>Tluszcze:" + obiektProduktu.tluszcze + "</h4></div>";
-
-}
 
 
-function reloadKalkulator() {
-    var objectOnSession;
-    var ListaKalkulator = document.getElementById("ListaKalkulator");
+    function reloadKalkulator() {
+        var objectOnSession;
+        var ListaKalkulator = document.getElementById("ListaKalkulator");
 
-    if (sessionStorage.getItem("obj") === null) {
-        navigator.notification.alert("Nie dodales zadnych produktow, przejdz do zakladki lista produktow", function () { window.location.href = "#ListaProduktow"; }, "Pusto!", "ok");
-        return;
-    }
-        objectOnSession =JSON.parse(sessionStorage.getItem("obj"));
-    if (objectOnSession !== undefined) { 
-          ListaKalkulator.empty();
-        for (let i = 0; i < objectOnSession.tablica.length; i++) {
-                
-           
-            newElementLi(objectOnSession.tablica[i],ListaKalkulator,callbackShowText);
+        if (sessionStorage.getItem("obj") === null) {
+            navigator.notification.alert("Nie dodales zadnych produktow, przejdz do zakladki lista produktow", function () { window.location.href = "#ListaProduktow"; }, "Pusto!", "ok");
+            return;
+        }
+        objectOnSession = JSON.parse(sessionStorage.getItem("obj"));
+        if (objectOnSession !== undefined) {
+            ListaKalkulator.empty();
+          
+            for (let i = 0; i < objectOnSession.tablica.length; i++) {
+
+               
+                newElementLi(objectOnSession.tablica[i], ListaKalkulator, callbackShowText);
+
+            }
 
         }
-        
+        wsadzTresc.innerHTML = "";
+
+
     }
+    function callbackShowText(objectToShow) {
 
+        return function (data) {
 
+            pokazProdukt(objectToShow);
+            obiektKlikniety = objectToShow;
+        }
+    }
+   
 }
 
-function callbackShowText(objectToShow) {
 
-    return function (data) {
 
-        pokazProdukt(objectToShow);
-        obiektKlikniety = objectToShow;
-    }
-}
+
 
