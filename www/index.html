@@ -26,9 +26,9 @@
         <input id="Login" type="text" />
         <label for="Haslo">Haslo</label>
         <input id="Haslo" type="text" />
-        <input id="Zaloguj" type="submit"  data-theme="b" value="Zaloguj" />
+        <input id="Zaloguj" type="submit" data-theme="b" value="Zaloguj" />
         <input id="Rejestracja" onclick="window.location.href = '#NowaRejestracja'" type="submit" value="Rejestruj" />
-        
+
 
     </div>
 
@@ -81,22 +81,22 @@
             </ul>
             <div id="Produkt"></div>
         </div>
-          
-     
-            <input id="Waga" type="number" />
-            <input id="PrzyciskOblicz" type="submit" value="Oblicz" data-theme="b" />           
-            <input id="DodajDoPosilku" type="submit" value="Dodaj do posilkow" />
-            <input id="Usun" type="submit" value="Usun z listy" data-theme="b" />
-    
 
 
-   
+        <input id="Waga" type="number" />
+        <input id="PrzyciskOblicz" type="submit" value="Oblicz" data-theme="b" />
+        <input id="DodajDoPosilku" type="submit" value="Dodaj do posilkow" />
+        <input id="Usun" type="submit" value="Usun z listy" data-theme="b" />
+
+
+
+
 
 
 
     </div>
 
-    <div id="Posilki" class="tapeta"  data-role="page">
+    <div id="Posilki" class="tapeta" data-role="page">
         <div data-role="header" class="menu" data-theme="b">
             <h1 class="info"></h1>
             <div data-role="navbar">
@@ -111,53 +111,49 @@
             </div>
         </div>
 
-       
-            <div id="zero" data-role="main" class="ui-content">
+
+        <div id="zero" data-role="main" class="ui-content">
 
 
-                <div id="Czeski" data-role="collapsible" data-theme="b" data-content-theme="b">
-                    <h4>Wybierz produkt</h4>
-               
-                </div>
+            <div id="Czeski" data-role="collapsible" data-theme="b" data-content-theme="b">
+                <h4>Wybierz produkt</h4>
 
-                <table data-role="table" class="ui-responsive ui-shadow" id="myTable">
-                    <thead>
-                        <tr>
-                
-                            <th data-priority="1">Nazwa</th>
-                            <th data-priority="2">[K]</th>
-                            <th data-priority="4">[W]</th>
-                            <th data-priority="5">[B]</th>
-                            <th data-priority="3">[T]</th>
-                          
-                        </tr>
-                    </thead>
-                    <tbody id="WierszProduktu">
+            </div>
 
-                       
+            <table data-role="table" class="ui-responsive ui-shadow" id="myTable">
+                <thead>
+                    <tr>
 
-                    </tbody>
-                </table>
+                        <th data-priority="1">Nazwa</th>
+                        <th data-priority="2">[K]</th>
+                        <th data-priority="4">[W]</th>
+                        <th data-priority="5">[B]</th>
+                        <th data-priority="3">[T]</th>
 
-                <div style="float:right;width:200px" >
+                    </tr>
+                </thead>
+                <tbody id="WierszProduktu"></tbody>
+            </table>
 
-                    <input style="float:right" id="UsunZTabeli" type="submit" value="Usun z tabeli" />
+            <div style="float:right;width:200px">
 
-                </div>
+                <input style="float:right" id="UsunZTabeli" type="submit" value="Usun z tabeli" />
 
-                
+            </div>
 
-                    <div id="Jedzenie" data-role="content">
-                        <label for="NazwaPosilku">Wprowadz nazwe:</label>
-                        <input type="text" id="NazwaPosilku" />
-                        <label for="Czas">Kiedy zjesz?</label>
-                        <input data-theme="b" data-content-theme="b" type="time" name="timePicker1" id="Czas" value="10:00">
-                        <input id="Wiadro" type="submit" value="Dodaj" />
-                    </div>
 
-                </div>
-      
-     
+
+            <div id="Jedzenie" data-role="content">
+                <label for="NazwaPosilku">Wprowadz nazwe:</label>
+                <input type="text" id="NazwaPosilku" />
+                <label for="Czas">Kiedy zjesz?</label>
+                <input data-theme="b" data-content-theme="b" type="time" name="timePicker1" id="Czas" value="10:00">
+                <input id="Wiadro" type="submit" value="Dodaj" />
+            </div>
+
+        </div>
+
+
 
     </div>
     <div id="ListaPosilkow" class="tapeta" data-role="page">
@@ -173,15 +169,50 @@
                     <li><a href="#Ustawienia">Ustawienia</a></li>
 
                 </ul>
+               
             </div>
+            <input class="nawigacja" type="submit" value="Aktywuj"/>
+            <input class="nawigacja" type="submit" value="Zapisz" />
+            <input class="nawigacja" type="submit" value="Usun" />
         </div>
-        <div id="Wujek"></div>
+        <div id="Wujek" style="position:relative">
+            <div style="float:left!important;">
+                <div class="posilek">
+
+                    <p>Niedziely obiad  godz 15,30 waga 3210 kal 49%</p>
+                    Jeszcze polska nie zginela Jeszcze polska nie zginela Jeszcze polska nie zginela Jeszcze polska nie zginela Jeszcze polska nie zginela Jeszcze polska nie zginela Jeszcze polska nie zginela
+
+
+                </div>
+                <div class="posilek">Dupk2a</div>
+                <div class="posilek">Dupk3a</div>
+                <div class="posilek">Dupk4a</div>
+
+
+            </div>
+            <div style="width:50px;float:right!important;" >
+                <div class="posilek">Dupk2a</div>
+                <div class="posilek">Dupk3a</div>
+                <div class="posilek">Dupk4a</div>
+            </div>
+
+         
+
+        </div>
 
         <div>
-            
+            <label for="TwojeListy">Twoje Listy</label>
+            <select id="TwojeListy" data-theme="b">
+
+                <option>Dupka</option>
+                <option>twoja dupja</option>
+            </select>
 
 
         </div>
+
+
+
 
     </div>
     <div id="Ustawienia" class="tapeta" data-role="page">
@@ -226,7 +257,7 @@
             <div style="width:160px;margin:0 auto;text-align:center">
                 <h2>Rejestracja</h2>
                 <h3>Login*</h3>
-                <input id="NowyLogin" type="text"  data-theme="a" />
+                <input id="NowyLogin" type="text" data-theme="a" />
                 <h3>Haslo*</h3>
                 <input id="NoweHaslo" type="text" data-theme="a" />
                 <h3>Twoja Plec*</h3>
@@ -245,10 +276,10 @@
                 <input id="Zatwierdz" type="submit" data-theme="b" value="Zarejestruj" />
                 <input type="submit" onclick="window.location.href = '#'" value="Powrot" />
             </div>
-            </div>
-
-
         </div>
+
+
+    </div>
 
 </body>
 </html>

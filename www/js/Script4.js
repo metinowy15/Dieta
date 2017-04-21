@@ -12,9 +12,9 @@ function start4() {
 function reloadListaPosilkow() {
 
 
-    stringOnSession = sessionStorage.getItem("eatObj");
-    ListaPosilkow = JSON.parse(stringOnSession).tablica;
-    Wujek = document.getElementById("Wujek").innerHTML = ListaPosilkow[0].nazwa + " " + ListaPosilkow[0].waga;
+  //  stringOnSession = sessionStorage.getItem("eatObj");
+   // ListaPosilkow = JSON.parse(stringOnSession).tablica;
+    
 
 
 
