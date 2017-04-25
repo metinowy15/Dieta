@@ -22,7 +22,7 @@ function sumujWage(tabToSum) {
     for (var i = 0; i < tabToSum.length; i++) {
         suma += tabToSum[i].ilosc;
     }
-    return Round(suma, 2);
+    return Round(suma, 1);
 }
 
 
@@ -34,7 +34,7 @@ function sumujKalorie(tabToSum) {
 
 
     }
-    return Round(suma, 2);
+    return Round(suma, 1);
 
 }
 function sumujBialka(tabToSum) {
@@ -45,7 +45,7 @@ function sumujBialka(tabToSum) {
 
 
     }
-    return Round(suma, 2);
+    return Round(suma, 1);
 
 }
 function sumujWegle(tabToSum) {
@@ -56,7 +56,7 @@ function sumujWegle(tabToSum) {
 
 
     }
-    return Round(suma, 2);
+    return Round(suma, 1);
 
 }
 function sumujTluszcze(tabToSum) {
@@ -68,7 +68,7 @@ function sumujTluszcze(tabToSum) {
 
 
     }
-    return Round(suma, 2);
+    return Round(suma, 1);
 }
 
 
