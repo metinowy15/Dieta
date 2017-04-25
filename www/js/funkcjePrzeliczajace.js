@@ -24,6 +24,16 @@ function sumujWage(tabToSum) {
     }
     return Round(suma, 1);
 }
+function sumujProcenty(tabToSum) {
+
+    var suma = 0;
+    for (var i = 0; i < tabToSum.length; i++) {
+        suma += tabToSum[i].dziennaDawka;
+    }
+    return Round(suma, 0);
+
+
+}
 
 
 function sumujKalorie(tabToSum) {
