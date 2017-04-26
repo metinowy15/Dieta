@@ -133,9 +133,10 @@ function odNowa() {
     zaznaczone = [];
 
     tabElement = document.getElementsByClassName("posilekZaznaczony");
-    for (var i = 0; i < tabElement.length; i++) {
+    let n = tabElement.length;
+    for (var i = n; i > 0; i--) {
 
-        pojemnik.removeChild(tabElement[i]); 
+        pojemnik.removeChild(tabElement[i-1]); 
 
     }
    
@@ -170,15 +171,17 @@ function usunZListy() {
 
 
     tabElement = document.getElementsByClassName("posilekZaznaczony");
-    for (var i = 0; i < tabElement.length; i++) {
+    let n = tabElement.length;
+    for (var i = n; i > 0; i--) {
 
-        pojemnik.removeChild(tabElement[i]);
+        pojemnik.removeChild(tabElement[i-1]);
 
     }
 
 
 }
 function ladujListe() {
+    TwojeListy.empty();
   
     listyzLokalki = localStorage.getItem("listObj");
     var tmp = JSON.parse(listyzLokalki);
@@ -191,7 +194,7 @@ function ladujListe() {
 
         let nowy = document.createElement("option");
         nowy.value = tmp.tablica[i].nazwaListy;
-        nowy.innerHTML = tmp.tablica[i].nazwaListy + "  " + tmp.tablica[i].procenty + "% CPM" + "lista jest ";
+        nowy.innerHTML = tmp.tablica[i].nazwaListy + ",  " + tmp.tablica[i].procenty + "% CPM, " + "lista jest ";
         nowy.innerHTML +=(tmp.tablica[i].aktywna == true) ? "aktywna" : "nie aktywna";
         
         TwojeListy.appendChild(nowy);
@@ -331,11 +334,11 @@ function aktywujListe() {
         for (let i = 0; i < tmpObj.tablica.length; i++) {
 
             if (wybranaLista.nazwaListy == tmpObj.tablica[i].nazwaListy) {
-                wybranaLista.czyAktywna(true);
-                tmpObj.tablica[i].czyAktywna(true);
+                wybranaLista.aktywna=true;
+                tmpObj.tablica[i].aktywna=true;
             } else {
 
-                tmpObj.tablica[i].czyAktywna(false);
+                tmpObj.tablica[i].aktywna=false;
 
             }
 
@@ -346,7 +349,7 @@ function aktywujListe() {
         localStorage.setItem("listObj", tmp);
         ladujListe();
 
-        
+        dodajDoKalendarza(wybranaLista);
 
 
         navigator.notification.alert("Aktywowales liste od teraz bedzie ci o niej przypominal twoj kalendarz", function () { }, "Wybierz liste", "ok");
@@ -356,6 +359,13 @@ function aktywujListe() {
 
 
 
+
+
+
+}
+function dodajDoKalendarza(listaDlaKalendarza) {
+
+    window.plugins.calendar.createEvent("Dieta", "Home", "Zjedz posilek", new Date(2017, 04, 28, 16, 30, 0, 0, 0), new Date(2017,04,28,17,30,0,0,0), success, error);
 
 
 
