@@ -4,6 +4,8 @@ var ListaPosilkow = [];
 var pojemnik;
 var listyzLokalki;
 let TwojeListy;
+var AktywujListe
+var wybranaLista;
 var nowaLista = {
 
     nazwaListy:"",
@@ -21,7 +23,8 @@ function start4() {
 
 
 
-    
+    AktywujListe = document.getElementById("AktywujListe");
+    AktywujListe.addEventListener("click", aktywujListe);
     TwojeListy = document.getElementById("TwojeListy");
     ZapiszListe = document.getElementById("ZapiszListe");
     UsunZListy = document.getElementById("UsunZListy");
@@ -211,6 +214,7 @@ function wybierzElement(aktywny) {
             if (tmp.tablica[i].nazwaListy == TwojeListy.value) {
 
                 ListaPosilkow = tmp.tablica[i].posilki;
+                wybranaLista = tmp.tablica[i];
                 rysujListe()
 
             }
@@ -239,13 +243,40 @@ function wybierzElement(aktywny) {
 
 
 }
+var czasA;
+var czasZ;
+var czasB;
 function rysujListe(){
     var nowy;
     pojemnik.empty();
+
+    ListaPosilkow.sort(function (a, b) {
+
+        
+        
+        czasA = parseInt(a.czas.substring(0, 2));
+        czasB = parseInt(b.czas.substring(0, 2));
+
+        
+
+        
+        if (czasA === czasB) {
+
+
+            return parseInt(a.czas.substring(3, 5)) -parseInt(b.czas.substring(3, 5));
+
+
+        } else {
+            return czasA- czasB;
+        }
+        
+    });
+
+
     for (let i = 0; i < ListaPosilkow.length; i++) {
-        nowy = document.createElement("div");
+        nowy = document.createElement("div"); 
         nowy.classList.add("posilek");
-        nowy.innerHTML = "<p><b>" + ListaPosilkow[i].nazwa +"</b>, godz:" + ListaPosilkow[i].czas + ", waga:" + ListaPosilkow[i].waga + "g, kal:" + ListaPosilkow[i].dziennaDawka + "% dziennej dawki</p>";
+        nowy.innerHTML = "<p><b>" + ListaPosilkow[i].nazwa + "</b>, godz:<b>" + ListaPosilkow[i].czas + "</b>, waga:<b>" + ListaPosilkow[i].waga + "g</b>, kal:<b>" + ListaPosilkow[i].dziennaDawka + "%</b> dziennej dawki</p>";
         for (let j = 0; j < ListaPosilkow[i].produktyTab.length; j++) {
 
             nowy.innerHTML += "<li><b>" + ListaPosilkow[i].produktyTab[j].nazwa + "</b>, bialka:" + ListaPosilkow[i].produktyTab[j].bialka + ", tluszcze:" + ListaPosilkow[i].produktyTab[j].tluszcze + ", weglowodane:" + ListaPosilkow[i].produktyTab[j].weglowodane + "</li>";
@@ -284,6 +315,48 @@ function rysujListe(){
         }
 
     }
+
+
+}
+function aktywujListe() {
+
+    listyzLokalki = localStorage.getItem("listObj");
+    var tmpObj = JSON.parse(listyzLokalki);
+    if (wybranaLista === undefined||wybranaLista===null) {
+
+        navigator.notification.alert("Zadna lista nie jest wybrana", function () { }, "Wybierz liste", "ok");
+        return;
+    } else {
+
+        for (let i = 0; i < tmpObj.tablica.length; i++) {
+
+            if (wybranaLista.nazwaListy == tmpObj.tablica[i].nazwaListy) {
+                wybranaLista.czyAktywna(true);
+                tmpObj.tablica[i].czyAktywna(true);
+            } else {
+
+                tmpObj.tablica[i].czyAktywna(false);
+
+            }
+
+
+
+        }
+        var tmp = JSON.stringify(tmpObj);
+        localStorage.setItem("listObj", tmp);
+        ladujListe();
+
+        
+
+
+        navigator.notification.alert("Aktywowales liste od teraz bedzie ci o niej przypominal twoj kalendarz", function () { }, "Wybierz liste", "ok");
+
+
+    }
+
+
+
+
 
 
 }
