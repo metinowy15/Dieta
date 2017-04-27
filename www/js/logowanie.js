@@ -41,13 +41,7 @@ function start0() {
                 Info[z].innerHTML =  confObj.getNick() + " twoje CPM wynosi: " + confObj.getCPM()+"<img src='img/ham.png' />" ;
             }
             window.location.href = "#ListaProduktow";//*Tymczasowe        sdsdsdsdss         **//
-            navigator.notification.alert( "Witaj "+ login, function () { window.location.href = "#ListaProduktow";
-
-window.plugins.calendar.createEvent("Dieta", "Home", "Zjedz posilek", new Date(2017, 04, 28, 16, 30, 0, 0, 0), new Date(2017,04,28,17,30,0,0,0), success, error);
-function success(s){navigator.notification.alert( "udalo sie", function () { });}
-function error(e){navigator.notification.alert( "nie udalo sie", function () { });}
-
-}, "Zalogowano!", "ok");
+            navigator.notification.alert( "Witaj "+ login, function () { window.location.href = "#ListaProduktow";}, "Zalogowano!", "ok");
             
         } else {
             console.log("nie dalo rady");

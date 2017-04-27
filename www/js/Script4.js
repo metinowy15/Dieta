@@ -365,7 +365,17 @@ function aktywujListe() {
 }
 function dodajDoKalendarza(listaDlaKalendarza) {
 
-    window.plugins.calendar.createEvent("Dieta", "Home", "Zjedz posilek", new Date(2017, 04, 28, 16, 30, 0, 0, 0), new Date(2017,04,28,17,30,0,0,0), success, error);
+
+    for (var i = 0; i < listaDlaKalendarza.posilki.length; i++) {
+
+        let startDate = new Date();
+        let timeH=parseInt(listaDlaKalendarza.posilki.czas.substring(0,2));
+        let timeM=parseInt(listaDlaKalendarza.posilki.czas.substring(3,5));
+        
+
+        window.plugins.calendar.createEvent("Dieta", "Home", listaDlaKalendarza.posilki[i].nazwa, new Date(startDate.getFullYear(), startDate.getMonth() + 1, startDate.getDate(), timeH, timeM, 0, 0, 0), new Date(startDate.getFullYear(), startDate.getMonth() + 1, startDate.getDate(), timeH, timeM, 0, 0, 0), success, error);
+    }
+    
 
 
 
