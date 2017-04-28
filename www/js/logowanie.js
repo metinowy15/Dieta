@@ -57,20 +57,7 @@ function start0() {
             for (let z = 0; z <Info.length; z++) {
                 Info[z].innerHTML =  confObj.getNick() + " twoje CPM wynosi: " + confObj.getCPM()+"<img src='img/ham.png' />" ;
             }
-            function listaDodana() { }
-            function nieDodanaLista() { }
-            for (var i = 0; i < listaDlaKalendarza.posilki.length; i++) {
-
-
-                let startDate = new Date();
-                let timeH = parseInt(listaDlaKalendarza.posilki[i].czas.substring(0, 2));
-                let timeM = parseInt(listaDlaKalendarza.posilki[i].czas.substring(3, 5));
-                let endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, startDate.getDate(), timeH, timeM, 0, 0, 0);
-                endDate.setDate(endDate.getDate() + 7);
-                endDate.setMinutes(endDate.getMinutes() + 10);
-
-                window.plugins.calendar.createEvent("Dieta", "Home", listaDlaKalendarza.posilki[i].nazwa, new Date(startDate.getFullYear(), startDate.getMonth() + 1, startDate.getDate(), timeH, timeM, 0, 0, 0), endDate, listaDodana, nieDodanaLista);
-            }
+           
             window.location.href = "#ListaProduktow";//*Tymczasowe        sdsdsdsdss         **//
             navigator.notification.alert("Witaj " + login, function () {
                 window.location.href = "#ListaProduktow"; }, "Zalogowano!", "ok");
