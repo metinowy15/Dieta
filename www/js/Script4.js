@@ -359,9 +359,10 @@ function aktywujListe() {
         }
         var tmp = JSON.stringify(tmpObj);
         localStorage.setItem("listObj", tmp);
+        dodajDoKalendarza(wybranaLista, staraLista);
         ladujListe();
 
-        dodajDoKalendarza(wybranaLista,staraLista);
+       
 
 
         navigator.notification.alert("Aktywowales liste od teraz bedzie ci o niej przypominal twoj kalendarz", function () { }, "Aktywowana", "ok");
@@ -408,7 +409,7 @@ function dodajDoKalendarza(listaDlaKalendarza,staraLista) {
         endDate.setDate(endDate.getDate() + 7);
         endDate.setMinutes(endDate.getMinutes() + 10);
 
-        window.plugins.calendar.createEvent("Dieta", "Home", listaDlaKalendarza.posilki[i].nazwa, new Date(startDate.getFullYear(), startDate.getMonth() + 1, startDate.getDate(), timeH, timeM, 0, 0, 0), endDate, success, error);
+        window.plugins.calendar.createEvent("Dieta", "Home", listaDlaKalendarza.posilki[i].nazwa, new Date(startDate.getFullYear(), startDate.getMonth() + 1, startDate.getDate(), timeH, timeM, 0, 0, 0), endDate, listaDodana, nieDodanaLista);
     }
     
 
