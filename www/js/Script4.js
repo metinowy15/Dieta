@@ -386,7 +386,7 @@ function dodajDoKalendarza(listaDlaKalendarza) {
     function nieDodanaLista() { navigator.notification.alert("Przepraszamy wystapil blad", function () { }, "Blad", "ok"); }
 
 
-    if (staraLista !== undefined || staraLista !== null) {
+  /*  if (staraLista !== undefined || staraLista !== null) {
         for (var j = 0; j < staraLista.posilki.length; j++) {
 
             let startDateD = new Date();
@@ -402,7 +402,7 @@ function dodajDoKalendarza(listaDlaKalendarza) {
 
 
         }
-    }
+    }*/
         for (var i = 0; i < listaDlaKalendarza.posilki.length; i++) {
 
 
