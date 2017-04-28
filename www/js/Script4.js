@@ -357,7 +357,8 @@ function aktywujListe() {
 
 
         }
-        dodajDoKalendarza();
+        navigator.notification.alert("znalazles liste a obiekt do niej to"+wybranaLista.posilki[0].nazwa, function () { }, "Aktywowana", "ok");
+        dodajDoKalendarza(wybranaLista);
         var tmp = JSON.stringify(tmpObj);
         localStorage.setItem("listObj", tmp);       
         ladujListe();
@@ -376,36 +377,18 @@ function aktywujListe() {
 
 
 }
-function dodajDoKalendarza() {
-    var staraLista=null;
-    var listaDlaKalendarza = {
-        posilki: [
-            {
-                czas: "13:30",
-                nazwa: "obiad"
-            },
-        {
-            czas: "19:00",
-            nazwa: "kolacja"
-        },
-    {
-        czas: "09:00",
-        nazwa: "sniadanie"
-    }
-        ]
-
-
-    }
-
-
+var test;
+function dodajDoKalendarza(listaDlaKalendarza) {
+    
+    test = listaDlaKalendarza;
     function succes() { navigator.notification.alert("udalo sie usunac stara liste", function () { }, "Gotowe", "ok"); }
     function error() { navigator.notification.alert("nie udalo sie usunac starej listy", function () { }, "Blad", "ok"); }
     function listaDodana() { navigator.notification.alert("udalo sie dodac wpis do kaledarza", function () { }, "Gotowe", "ok"); }
     function nieDodanaLista() { navigator.notification.alert("Przepraszamy wystapil blad", function () { }, "Blad", "ok"); }
 
 
-    if (staraLista !== undefined || staraLista !== null) {
-        for (var j = 0; j < staraLista.posilki.length; j++) {
+    //if (staraLista !== undefined || staraLista !== null) {
+       /* for (var j = 0; j < staraLista.posilki.length; j++) {
 
             let startDate = new Date();
             let timeH = parseInt(staraLista.posilki[j].czas.substring(0, 2));
@@ -417,9 +400,9 @@ function dodajDoKalendarza() {
             window.plugins.calendar.deleteEvent("Dieta", "Home", staraLista.posilki[j].nazwa, new Date(startDate.getFullYear(), startDate.getMonth() + 1, startDate.getDate(), timeH, timeM, 0, 0, 0), endDate, success, error);
 
 
-        }
+        }*/
 
-    } 
+    //} 
         for (var i = 0; i < listaDlaKalendarza.posilki.length; i++) {
 
 
