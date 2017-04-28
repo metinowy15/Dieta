@@ -6,6 +6,7 @@ var listyzLokalki;
 let TwojeListy;
 var AktywujListe
 var wybranaLista;
+var staraLista;
 var nowaLista = {
 
     nazwaListy:"",
@@ -195,8 +196,7 @@ function ladujListe() {
         let nowy = document.createElement("option");
         nowy.value = tmp.tablica[i].nazwaListy;
         nowy.innerHTML = tmp.tablica[i].nazwaListy + ",  " + tmp.tablica[i].procenty + "% CPM, " + "lista jest ";
-        nowy.innerHTML +=(tmp.tablica[i].aktywna == true) ? "aktywna" : "nie aktywna";
-        
+        nowy.innerHTML +=(tmp.tablica[i].aktywna == true) ? "aktywna" : "nie aktywna";      
         TwojeListy.appendChild(nowy);
 
 
@@ -331,7 +331,19 @@ function aktywujListe() {
         return;
     } else {
 
+
+        for (let j = 0; j < tmpObj.tablica.length; j++) {
+
+            if (tmp.tablica[i].aktywna == true) {
+
+
+                staraLista = tmp.tablica[i];
+            }
+
+        }
+
         for (let i = 0; i < tmpObj.tablica.length; i++) {
+
 
             if (wybranaLista.nazwaListy == tmpObj.tablica[i].nazwaListy) {
                 wybranaLista.aktywna=true;
@@ -349,10 +361,10 @@ function aktywujListe() {
         localStorage.setItem("listObj", tmp);
         ladujListe();
 
-        dodajDoKalendarza(wybranaLista);
+        dodajDoKalendarza(wybranaLista,staraLista);
 
 
-        navigator.notification.alert("Aktywowales liste od teraz bedzie ci o niej przypominal twoj kalendarz", function () { }, "Wybierz liste", "ok");
+        navigator.notification.alert("Aktywowales liste od teraz bedzie ci o niej przypominal twoj kalendarz", function () { }, "Aktywowana", "ok");
 
 
     }
@@ -363,17 +375,40 @@ function aktywujListe() {
 
 
 }
-function dodajDoKalendarza(listaDlaKalendarza) {
+function dodajDoKalendarza(listaDlaKalendarza,staraLista) {
+    function succes() { navigator.notification.alert("udalo sie usunac stara liste", function () { }, "Gotowe", "ok"); }
+    function error() { navigator.notification.alert("nie udalo sie usunac starej listy", function () { }, "Blad", "ok"); }
+    function listaDodana() { navigator.notification.alert("udalo sie dodac wpis do kaledarza", function () { }, "Gotowe", "ok"); }
+    function nieDodanaLista() { navigator.notification.alert("Przepraszamy wystapil blad", function () { }, "Blad", "ok"); }
 
 
+    if (staraLista !== undefined || staraLista !== null) {
+        for (var j = 0; j < staraLista.length; j++) {
+
+            let startDate = new Date();
+            let timeH = parseInt(staraLista.posilki[i].czas.substring(0, 2));
+            let timeM = parseInt(staraLista.posilki[i].czas.substring(3, 5));
+            let endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, startDate.getDate(), timeH, timeM, 0, 0, 0);
+            endDate.setDate(endDate.getDate() + 7);
+            endDate.setMinutes(endDate.getMinutes() + 10);
+
+            window.plugins.calendar.deleteEvent("Dieta", "Home", staraLista.posilki[i].nazwa, new Date(startDate.getFullYear(), startDate.getMonth() + 1, startDate.getDate(), timeH, timeM, 0, 0, 0), endDate, success, error);
+
+
+        }
+
+    }
     for (var i = 0; i < listaDlaKalendarza.posilki.length; i++) {
 
-        let startDate = new Date();
-        let timeH=parseInt(listaDlaKalendarza.posilki.czas.substring(0,2));
-        let timeM=parseInt(listaDlaKalendarza.posilki.czas.substring(3,5));
-        
 
-        window.plugins.calendar.createEvent("Dieta", "Home", listaDlaKalendarza.posilki[i].nazwa, new Date(startDate.getFullYear(), startDate.getMonth() + 1, startDate.getDate(), timeH, timeM, 0, 0, 0), new Date(startDate.getFullYear(), startDate.getMonth() + 1, startDate.getDate(), timeH, timeM, 0, 0, 0), success, error);
+        let startDate = new Date();
+        let timeH=parseInt(listaDlaKalendarza.posilki[i].czas.substring(0,2));
+        let timeM=parseInt(listaDlaKalendarza.posilki[i].czas.substring(3,5));
+        let endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, startDate.getDate(), timeH, timeM, 0, 0, 0);
+        endDate.setDate(endDate.getDate() + 7);
+        endDate.setMinutes(endDate.getMinutes() + 10);
+
+        window.plugins.calendar.createEvent("Dieta", "Home", listaDlaKalendarza.posilki[i].nazwa, new Date(startDate.getFullYear(), startDate.getMonth() + 1, startDate.getDate(), timeH, timeM, 0, 0, 0), endDate, success, error);
     }
     
 

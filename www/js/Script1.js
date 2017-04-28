@@ -1,28 +1,39 @@
 window.addEventListener("DOMContentLoaded", start);
 
-
+var BazaDanych;
 
 function start() {
-  
+    
     let Lista = document.getElementById("Lista");
     let Wyszukiwarka = document.getElementById("Wyszukiwarka");
     let Wyszukaj = document.getElementById("Wyszukaj");
         Wyszukaj.addEventListener("click", function () {
         
-        var nazwaSkladnika = Wyszukiwarka.value.toLowerCase();
+        var nazwaSkladnika = Wyszukiwarka.value;
         Lista.empty();//czysci liste przy kazdym wszyszukiwaniu
-        //tutaj Ajax, który wywo³a skrypt php, który zwraca JSONA z bazy danych jesli w nazwie produktu wystepuje zmienna $nazwaSkladnika po czym przerobi to na obiekt JS
-        //Wykorzystane tymczasowe repozytorium dla testów
+        $.ajax({
+            url: "http://czasnasolidarnosc.pl/zBazdyDanych.php",
+            type: "POST",
+            data: {
+                nazwa:nazwaSkladnika
+            },
+            success: function (response) {
+                BazaDanych = JSON.parse(response);
+                for (let i = 0; i < BazaDanych.wynik.length; i++) {
 
-        for (let i = 0; i < objTmp.tabTmp.length; i++) {
 
-            if (objTmp.tabTmp[i].nazwa === nazwaSkladnika||objTmp.tabTmp[i].kategoria===nazwaSkladnika) {
 
-                newElementLi(objTmp.tabTmp[i], Lista, callbackToNewElement);//Tworzy nowy element Li uzywajac funkkcji ogolnej 
+                    newElementLi(BazaDanych.wynik[i], Lista, callbackToNewElement);//Tworzy nowy element Li uzywajac funkkcji ogolnej 
+                }
+
+               
             }
-
-        }
-
+        });
+        //tutaj Ajax, który wywo³a skrypt php, który zwraca JSONA z bazy danych jesli w nazwie produktu wystepuje zmienna $nazwaSkladnika po czym przerobi to na obiekt JS
+        
+      
+        
+        
     })
     
 }
