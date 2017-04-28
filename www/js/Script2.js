@@ -61,7 +61,7 @@ function start2() {
             ileGram = "100";
         }
        
-        wsadzTresc.innerHTML = "<h3>" + obiektProduktu.nazwa + ", w " + ileGram + " gramach:</h3><div class='polowa'><h4>Kalorii:" + obiektProduktu.kalorie + "</h4><h4>Bialka:" + obiektProduktu.bialka + "</h4></div><div class='polowa'><h4>Weglowodane:" + obiektProduktu.weglowodane + "</h4><h4>Tluszcze:" + obiektProduktu.tluszcze + "</h4></div>";
+        wsadzTresc.innerHTML = "<h3>" + obiektProduktu.nazwa + ", w " + ileGram + " gramach:</h3><div class='polowa'><h4>Kalorii:" + obiektProduktu.kalorie + "</h4><h4>Bialka:" + obiektProduktu.bialko + "</h4></div><div class='polowa'><h4>Weglowodane:" + obiektProduktu.weglowodany + "</h4><h4>Tluszcze:" + obiektProduktu.tluszcz + "</h4></div>";
 
     }
 

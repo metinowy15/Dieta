@@ -282,7 +282,7 @@ function rysujListe(){
         nowy.innerHTML = "<p><b>" + ListaPosilkow[i].nazwa + "</b>, godz:<b>" + ListaPosilkow[i].czas + "</b>, waga:<b>" + ListaPosilkow[i].waga + "g</b>, kal:<b>" + ListaPosilkow[i].dziennaDawka + "%</b> dziennej dawki</p>";
         for (let j = 0; j < ListaPosilkow[i].produktyTab.length; j++) {
 
-            nowy.innerHTML += "<li><b>" + ListaPosilkow[i].produktyTab[j].nazwa + "</b>, bialka:" + ListaPosilkow[i].produktyTab[j].bialka + ", tluszcze:" + ListaPosilkow[i].produktyTab[j].tluszcze + ", weglowodane:" + ListaPosilkow[i].produktyTab[j].weglowodane + "</li>";
+            nowy.innerHTML += "<li><b>" + ListaPosilkow[i].produktyTab[j].nazwa + "</b>, bialka:" + ListaPosilkow[i].produktyTab[j].bialko + ", tluszcze:" + ListaPosilkow[i].produktyTab[j].tluszcz + ", weglowodane:" + ListaPosilkow[i].produktyTab[j].weglowodany + "</li>";
 
         }
         nowy.innerHTML += "<p>w sumie=Bialek:<b>" + sumujBialka(ListaPosilkow[i].produktyTab) + "g</b>, Tluszczy:<b>" + sumujTluszcze(ListaPosilkow[i].produktyTab) + "g</b>, Weglowodanych:<b>" + sumujWegle(ListaPosilkow[i].produktyTab)+"g</b></p>";
@@ -324,7 +324,7 @@ function rysujListe(){
 function aktywujListe() {
 
     listyzLokalki = localStorage.getItem("listObj");
-    var tmpObj = JSON.parse(listyzLokalki);
+    let tmpObj = JSON.parse(listyzLokalki);
     if (wybranaLista === undefined||wybranaLista===null) {
 
         navigator.notification.alert("Zadna lista nie jest wybrana", function () { }, "Wybierz liste", "ok");
@@ -334,10 +334,10 @@ function aktywujListe() {
 
         for (let j = 0; j < tmpObj.tablica.length; j++) {
 
-            if (tmp.tablica[i].aktywna == true) {
+            if (tmpObj.tablica[j].aktywna == true) {
 
 
-                staraLista = tmp.tablica[i];
+                staraLista = tmpObj.tablica[j];
             }
 
         }

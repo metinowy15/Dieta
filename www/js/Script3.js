@@ -88,7 +88,7 @@ function narysujTablice() {
     for (let i = 0; i < posilek.length; i++) {
 
         nowyWiersz = document.createElement("tr");
-        nowyWiersz.innerHTML = "<td>" + posilek[i].nazwa + "</td>" + "<td>" + posilek[i].kalorie + "</td>" + "<td>" + posilek[i].weglowodane + "</td>" + "<td>" + posilek[i].bialka + "</td>" + "<td>" + posilek[i].tluszcze + "</td>";
+        nowyWiersz.innerHTML = "<td>" + posilek[i].nazwa + "</td>" + "<td>" + posilek[i].kalorie + "</td>" + "<td>" + posilek[i].weglowodany + "</td>" + "<td>" + posilek[i].bialko + "</td>" + "<td>" + posilek[i].tluszcz + "</td>";
         WierszProduktu.appendChild(nowyWiersz);
     }
     razem = document.createElement("tr");//pod ostatnim wierszem dodaje wiersz razem, ktory uzywajac funkcji przeliczajacych sumuje wartosci

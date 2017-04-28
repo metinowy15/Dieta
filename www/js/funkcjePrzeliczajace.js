@@ -1,17 +1,16 @@
 function mechanizmPrzeliczajacy(obiektDoPrzeliczenia, iloscGram) {
 
-    noweKalorie = (obiektDoPrzeliczenia.kalorie * iloscGram) / 100;
-    noweBialka = (obiektDoPrzeliczenia.bialka * iloscGram) / 100;
-    noweWegle = (obiektDoPrzeliczenia.weglowodane * iloscGram) / 100;
-    noweTluszcze = (obiektDoPrzeliczenia.tluszcze * iloscGram) / 100;
+ var   noweKalorie =Round((obiektDoPrzeliczenia.kalorie * iloscGram) / 100,1);
+ var   noweBialka = Round((obiektDoPrzeliczenia.bialko * iloscGram) / 100,1);
+ var   noweWegle = Round((obiektDoPrzeliczenia.weglowodany * iloscGram) / 100,1);
+ var  noweTluszcze = Round((obiektDoPrzeliczenia.tluszcz * iloscGram) / 100,1);
 
     return {
         nazwa: obiektDoPrzeliczenia.nazwa,
-        kategoria: obiektDoPrzeliczenia.kategoria,
         kalorie: noweKalorie,
-        bialka: noweBialka,
-        weglowodane: noweWegle,
-        tluszcze: noweTluszcze,
+        bialko: noweBialka,
+        weglowodany: noweWegle,
+        tluszcz: noweTluszcze,
         ilosc: iloscGram
 
     }
@@ -51,7 +50,7 @@ function sumujBialka(tabToSum) {
     var suma = 0;
     for (var i = 0; i < tabToSum.length; i++) {
 
-        suma += tabToSum[i].bialka;
+        suma += tabToSum[i].bialko;
 
 
     }
@@ -62,7 +61,7 @@ function sumujWegle(tabToSum) {
     var suma = 0;
     for (var i = 0; i < tabToSum.length; i++) {
 
-        suma += tabToSum[i].weglowodane;
+        suma += tabToSum[i].weglowodany;
 
 
     }
@@ -73,7 +72,7 @@ function sumujTluszcze(tabToSum) {
     var suma = 0;
     for (var i = 0; i < tabToSum.length; i++) {
 
-        suma += tabToSum[i].tluszcze;
+        suma += tabToSum[i].tluszcz;
 
 
 
