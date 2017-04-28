@@ -403,7 +403,7 @@ function dodajDoKalendarza(listaDlaKalendarza) {
 
         }
     }*/
-        for (var i = 0; i < listaDlaKalendarza.posilki.length; i++) {
+      for (var i = 0; i < listaDlaKalendarza.posilki.length; i++) {
 
 
             let startDate = new Date();
