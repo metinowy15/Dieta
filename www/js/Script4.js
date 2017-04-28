@@ -357,7 +357,7 @@ function aktywujListe() {
 
 
         }
-        dodajDoKalendarza(wybranaLista, staraLista);
+        dodajDoKalendarza();
         var tmp = JSON.stringify(tmpObj);
         localStorage.setItem("listObj", tmp);       
         ladujListe();
@@ -376,7 +376,28 @@ function aktywujListe() {
 
 
 }
-function dodajDoKalendarza(listaDlaKalendarza,staraLista) {
+function dodajDoKalendarza() {
+    var staraLista=null;
+    var listaDlaKalendarza = {
+        posilki: [
+            {
+                czas: "13:30",
+                nazwa: "obiad"
+            },
+        {
+            czas: "19:00",
+            nazwa: "kolacja"
+        },
+    {
+        czas: "09:00",
+        nazwa: "sniadanie"
+    }
+        ]
+
+
+    }
+
+
     function succes() { navigator.notification.alert("udalo sie usunac stara liste", function () { }, "Gotowe", "ok"); }
     function error() { navigator.notification.alert("nie udalo sie usunac starej listy", function () { }, "Blad", "ok"); }
     function listaDodana() { navigator.notification.alert("udalo sie dodac wpis do kaledarza", function () { }, "Gotowe", "ok"); }
