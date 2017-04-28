@@ -1,22 +1,4 @@
 window.addEventListener("DOMContentLoaded", start0);
-var listaDlaKalendarza = {
-    posilki: [
-        {
-            czas: "13:30",
-            nazwa: "obiad"
-        },
-    {
-        czas: "19:00",
-        nazwa: "kolacja"
-    },
-{
-    czas: "09:00",
-    nazwa: "sniadanie"
-}
-    ]
-
-
-}
 function start0() {
 
     var Login = document.getElementById("Login");
